@@ -162,7 +162,7 @@
       <!-- Info Cards -->
       <div class="info-cards">
         <div class="card info-card">
-          <div class="info-icon" style="background-color: rgba(46, 204, 113, 0.1); color: #2ECC71;">
+          <div class="info-icon info-icon-success">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="12" y1="1" x2="12" y2="23"/>
               <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
@@ -173,7 +173,7 @@
         </div>
 
         <div class="card info-card">
-          <div class="info-icon" style="background-color: rgba(15, 76, 129, 0.1); color: #0F4C81;">
+          <div class="info-icon info-icon-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>
@@ -186,7 +186,7 @@
         </div>
 
         <div class="card info-card">
-          <div class="info-icon" style="background-color: rgba(243, 156, 18, 0.1); color: #F39C12;">
+          <div class="info-icon info-icon-warning">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
@@ -243,28 +243,50 @@ const searchBansos = async () => {
 <style scoped>
 .bansos-check-page {
   padding: var(--spacing-xl) 0 var(--spacing-2xl);
+  background: var(--color-background);
+  min-height: 100vh;
 }
 
 .page-header {
   text-align: center;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
 }
 
 .page-header h1 {
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-sm);
+  font-size: 2.25rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-md);
 }
 
 .page-header p {
   color: var(--color-text-secondary);
   max-width: 500px;
   margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 /* Search Card */
 .search-card {
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.search-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
 }
 
 .title-icon {
@@ -289,7 +311,7 @@ const searchBansos = async () => {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
-  font-size: var(--font-size-xs);
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   margin-top: var(--spacing-xs);
 }
@@ -297,11 +319,22 @@ const searchBansos = async () => {
 .form-hint svg {
   width: 14px;
   height: 14px;
+  color: var(--color-secondary);
 }
 
 .search-form .btn {
   width: 100%;
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 14px;
+  background: var(--gradient-primary);
+  transition: all 0.3s var(--transition-bounce);
+}
+
+.search-form .btn:not(:disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
 }
 
 .btn-icon {
@@ -324,7 +357,7 @@ const searchBansos = async () => {
 
 /* Results Section */
 .results-section {
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto var(--spacing-xl);
 }
 
@@ -337,12 +370,16 @@ const searchBansos = async () => {
 
 .results-header h3 {
   margin: 0;
-  font-size: var(--font-size-lg);
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .results-count {
-  font-size: var(--font-size-sm);
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
+  background: var(--color-background);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
 }
 
 .results-list {
@@ -353,6 +390,14 @@ const searchBansos = async () => {
 
 .result-card {
   padding: var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s var(--transition-bounce);
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
 }
 
 .result-header {
@@ -370,8 +415,8 @@ const searchBansos = async () => {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  font-size: var(--font-size-lg);
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .result-name svg {
@@ -389,21 +434,23 @@ const searchBansos = async () => {
 .detail-row {
   display: flex;
   justify-content: space-between;
-  padding: var(--spacing-sm) 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-background);
+  border-radius: 10px;
 }
 
 .detail-label {
   color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+  font-size: 0.9rem;
 }
 
 .detail-value {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .detail-value.highlight {
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .result-note {
@@ -412,8 +459,9 @@ const searchBansos = async () => {
   gap: var(--spacing-sm);
   margin-top: var(--spacing-md);
   padding: var(--spacing-md);
-  background-color: rgba(15, 76, 129, 0.05);
-  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .result-note svg {
@@ -425,37 +473,42 @@ const searchBansos = async () => {
 
 .result-note p {
   margin: 0;
-  font-size: var(--font-size-xs);
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* No Results */
 .no-results {
   text-align: center;
   padding: var(--spacing-2xl);
+  background: var(--color-surface);
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
 }
 
 .no-results-icon {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   margin: 0 auto var(--spacing-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-background);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
   border-radius: 50%;
 }
 
 .no-results-icon svg {
-  width: 40px;
-  height: 40px;
-  color: var(--color-text-muted);
+  width: 50px;
+  height: 50px;
+  color: #EF4444;
 }
 
 .no-results h4 {
   margin: 0 0 var(--spacing-sm);
   color: var(--color-text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .no-results > p {
@@ -467,13 +520,16 @@ const searchBansos = async () => {
   text-align: left;
   max-width: 350px;
   margin: 0 auto;
-  padding-left: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--color-background);
+  border-radius: 12px;
 }
 
 .no-results-tips li {
   color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-sm);
+  padding-left: 0.5rem;
 }
 
 /* Privacy Notice */
@@ -481,45 +537,50 @@ const searchBansos = async () => {
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-lg);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto var(--spacing-xl);
-  background-color: rgba(15, 76, 129, 0.03);
-  border: 1px solid rgba(15, 76, 129, 0.1);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 20px;
+  padding: var(--spacing-xl);
 }
 
 .notice-icon {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  border-radius: 16px;
   flex-shrink: 0;
+  box-shadow: var(--shadow-glow);
 }
 
 .notice-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   color: white;
 }
 
 .notice-content h4 {
   margin: 0 0 var(--spacing-sm);
   color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .notice-content p {
   margin: 0;
-  font-size: var(--font-size-sm);
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* Info Cards */
 .info-cards {
   display: grid;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   max-width: 900px;
   margin: 0 auto;
 }
@@ -533,42 +594,67 @@ const searchBansos = async () => {
 .info-card {
   text-align: center;
   padding: var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s var(--transition-bounce);
+}
+
+.info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
 }
 
 .info-icon {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   margin: 0 auto var(--spacing-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-lg);
+  border-radius: 18px;
+}
+
+.info-icon-success {
+  background: var(--color-secondary-50);
+  color: var(--color-secondary);
+}
+
+.info-icon-primary {
+  background: var(--color-primary-50);
+  color: var(--color-primary);
+}
+
+.info-icon-warning {
+  background: var(--color-warning-50);
+  color: var(--color-warning);
 }
 
 .info-icon svg {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .info-card h4 {
   margin: 0 0 var(--spacing-sm);
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
 .info-card p {
   margin: 0;
-  font-size: var(--font-size-sm);
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* Transitions */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+  transform: translateY(20px);
 }
 </style>

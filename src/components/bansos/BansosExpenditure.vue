@@ -159,7 +159,7 @@ const calculatePercentage = (realization, budget) => {
 <style scoped>
 .expenditure-page {
   padding: 2rem 0 4rem;
-  background-color: #f8fafc;
+  background-color: var(--color-background);
   min-height: 80vh;
 }
 
@@ -175,22 +175,22 @@ const calculatePercentage = (realization, budget) => {
 
 .header-section h1 {
   font-size: 2rem;
-  color: #1e293b;
+  color: var(--color-text-primary);
   margin-bottom: 0.5rem;
 }
 
 .header-section p {
-  color: #64748b;
+  color: var(--color-text-secondary);
 }
 
 .filters {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 2rem;
-  background: white;
+  background: var(--color-surface);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .filter-group {
@@ -202,15 +202,15 @@ const calculatePercentage = (realization, budget) => {
 .filter-group label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #64748b;
+  color: var(--color-text-secondary);
 }
 
 .filter-group select {
   padding: 0.5rem 2rem 0.5rem 1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
-  background-color: white;
-  color: #1e293b;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
   font-size: 0.95rem;
   cursor: pointer;
 }
@@ -223,15 +223,15 @@ const calculatePercentage = (realization, budget) => {
 }
 
 .stat-card {
-  background: white;
+  background: var(--color-surface);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-card h3 {
   font-size: 0.875rem;
-  color: #64748b;
+  color: var(--color-text-secondary);
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
@@ -239,17 +239,17 @@ const calculatePercentage = (realization, budget) => {
 .stat-card .value {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--color-text-primary);
 }
 
 .stat-card.percentage .value {
-  color: #2563eb;
+  color: var(--color-primary);
 }
 
 .table-container {
-  background: white;
+  background: var(--color-surface);
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-sm);
   overflow-x: auto;
 }
 
@@ -260,24 +260,24 @@ table {
 }
 
 th {
-  background-color: #f1f5f9;
+  background-color: var(--color-background);
   padding: 1rem;
   text-align: left;
   font-weight: 600;
-  color: #475569;
+  color: var(--color-text-secondary);
   font-size: 0.875rem;
 }
 
 td {
   padding: 1rem;
-  border-bottom: 1px solid #e2e8f0;
-  color: #334155;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   font-size: 0.95rem;
 }
 
 .program-name {
   font-weight: 500;
-  color: #1e293b;
+  color: var(--color-text-primary);
 }
 
 .progress-wrapper {
@@ -295,21 +295,21 @@ td {
 .progress-bar {
   flex: 1;
   height: 8px;
-  background-color: #e2e8f0;
+  background-color: var(--color-border);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background-color: #2563eb;
+  background-color: var(--color-primary);
   border-radius: 4px;
 }
 
 .empty-state {
   text-align: center;
   padding: 3rem;
-  color: #94a3b8;
+  color: var(--color-text-muted);
 }
 
 @media (max-width: 640px) {

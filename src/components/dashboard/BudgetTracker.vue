@@ -201,11 +201,11 @@ const getStatusClass = (status) => {
 
 const getProgressColor = (status) => {
   const colorMap = {
-    selesai: '#2ECC71',
-    sedang_berjalan: '#F39C12',
-    belum_mulai: '#E74C3C'
+    selesai: 'var(--color-success)',
+    sedang_berjalan: 'var(--color-warning)',
+    belum_mulai: 'var(--color-danger)'
   }
-  return colorMap[status] || '#3498DB'
+  return colorMap[status] || 'var(--color-info)'
 }
 
 const getStatusInfo = (status) => {

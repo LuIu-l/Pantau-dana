@@ -393,7 +393,7 @@ const stats = [
 <style scoped>
 .hero-search {
   position: relative;
-  background: linear-gradient(135deg, #0a3d62 0%, #1a5276 50%, #0f4c81 100%);
+  background: var(--gradient-dark);
   padding: var(--spacing-2xl) 0 calc(var(--spacing-2xl) + 80px);
   color: white;
   overflow: hidden;
@@ -413,11 +413,12 @@ const stats = [
 
 .particle {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(139,92,246,0.2) 100%);
   border-radius: 50%;
   animation: float 15s infinite;
+  box-shadow: 0 0 20px rgba(139,92,246,0.3);
 }
 
 .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 12s; }
@@ -462,20 +463,26 @@ const stats = [
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(46, 204, 113, 0.2);
-  border: 1px solid rgba(46, 204, 113, 0.4);
-  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 0.5rem 1.25rem;
   border-radius: 50px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1.5rem;
-  animation: fadeInDown 0.6s ease;
+  animation: fadeInDown 0.6s ease, pulse-glow 2s ease-in-out infinite;
+  backdrop-filter: blur(10px);
 }
 
 .hero-badge svg {
   width: 16px;
   height: 16px;
-  color: var(--color-secondary-light);
+  color: var(--color-secondary);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.5); }
 }
 
 @keyframes fadeInDown {
@@ -507,7 +514,7 @@ const stats = [
 
 .title-highlight {
   display: block;
-  background: linear-gradient(135deg, #2ECC71 0%, #58D68D 100%);
+  background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -557,10 +564,23 @@ const stats = [
   background: var(--color-surface);
   border-radius: 24px;
   padding: var(--spacing-lg);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-xl);
   max-width: 900px;
   margin: 0 auto;
   animation: fadeInUp 0.6s ease 0.4s both;
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.search-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
 }
 
 @media (min-width: 640px) {
@@ -581,12 +601,13 @@ const stats = [
 .card-icon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  border-radius: 12px;
+  background: var(--gradient-primary);
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: var(--shadow-glow);
 }
 
 .card-icon svg {
@@ -672,8 +693,8 @@ const stats = [
 .form-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.1);
-  background-color: white;
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.2);
+  background-color: var(--color-surface);
 }
 
 .form-select.disabled,
@@ -718,14 +739,14 @@ const stats = [
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
+  background: var(--color-surface);
   border: 2px solid var(--color-border);
   border-top: none;
   border-radius: 0 0 12px 12px;
   max-height: 200px;
   overflow-y: auto;
   z-index: 100;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .suggestion-item {
@@ -759,13 +780,34 @@ const stats = [
   padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  border-radius: 14px;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+}
+
+.search-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.search-btn:not(:disabled):hover::before {
+  left: 100%;
 }
 
 .search-btn:not(:disabled):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(15, 76, 129, 0.3);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
 }
 
 .search-btn:not(:disabled):hover .btn-arrow {
@@ -797,33 +839,35 @@ const stats = [
 
 .stat-item {
   text-align: center;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s var(--transition-bounce);
 }
 
 .stat-item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .stat-icon {
-  width: 40px;
-  height: 40px;
-  margin: 0 auto 0.5rem;
-  background: rgba(46, 204, 113, 0.2);
-  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 0.75rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .stat-icon svg {
-  width: 20px;
-  height: 20px;
-  color: var(--color-secondary-light);
+  width: 24px;
+  height: 24px;
+  color: var(--color-secondary);
 }
 
 .stat-number {
@@ -878,7 +922,7 @@ const stats = [
 .badge-item svg {
   width: 16px;
   height: 16px;
-  color: var(--color-secondary-light);
+  color: var(--color-secondary);
 }
 
 .hero-wave {
@@ -902,8 +946,9 @@ const stats = [
   right: -20%;
   width: 60%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
   pointer-events: none;
+  animation: rotate-slow 30s linear infinite;
 }
 
 .hero-search::after {
@@ -913,7 +958,12 @@ const stats = [
   left: -10%;
   width: 40%;
   height: 150%;
-  background: radial-gradient(circle, rgba(46,204,113,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
   pointer-events: none;
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 </style>

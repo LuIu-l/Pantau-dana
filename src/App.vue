@@ -65,7 +65,7 @@ const backToSearch = () => {
               
               <div class="features-grid">
                 <div class="feature-card">
-                  <div class="feature-icon" style="background-color: rgba(15, 76, 129, 0.1); color: #0F4C81;">
+                  <div class="feature-icon" style="background-color: var(--color-primary-50); color: var(--color-primary);">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <circle cx="11" cy="11" r="8"/>
                       <path d="M21 21l-4.35-4.35"/>
@@ -76,7 +76,7 @@ const backToSearch = () => {
                 </div>
 
                 <div class="feature-card">
-                  <div class="feature-icon" style="background-color: rgba(46, 204, 113, 0.1); color: #2ECC71;">
+                  <div class="feature-icon" style="background-color: var(--color-secondary-50); color: var(--color-secondary);">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
                       <path d="M22 12A10 10 0 0 0 12 2v10z"/>
@@ -87,7 +87,7 @@ const backToSearch = () => {
                 </div>
 
                 <div class="feature-card">
-                  <div class="feature-icon" style="background-color: rgba(243, 156, 18, 0.1); color: #F39C12;">
+                  <div class="feature-icon" style="background-color: rgba(217, 119, 6, 0.1); color: var(--color-alert);">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
@@ -97,7 +97,7 @@ const backToSearch = () => {
                 </div>
 
                 <div class="feature-card">
-                  <div class="feature-icon" style="background-color: rgba(231, 76, 60, 0.1); color: #E74C3C;">
+                  <div class="feature-icon" style="background-color: rgba(220, 38, 38, 0.1); color: var(--color-danger);">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
                       <line x1="8" y1="2" x2="8" y2="18"/>
@@ -231,11 +231,13 @@ const backToSearch = () => {
   text-align: center;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-base);
+  border: 1px solid var(--color-border-light);
 }
 
 .feature-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
+  border-color: var(--color-primary);
 }
 
 .feature-icon {
