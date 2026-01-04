@@ -1,24 +1,59 @@
 <script setup>
-import { ref, computed, provide, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import HeroSearch from '@/components/search/HeroSearch.vue'
 import VillageSummary from '@/components/dashboard/VillageSummary.vue'
 import BudgetTracker from '@/components/dashboard/BudgetTracker.vue'
 import ProjectMap from '@/components/map/ProjectMap.vue'
 import ReportModal from '@/components/report/ReportModal.vue'
-import { desaDetail, proyekData } from '@/data/mockData.js'
-import { useRoute, useRouter } from 'vue-router'
+import AnimatedCounter from '@/components/ui/AnimatedCounter.vue'
+import NewsCard from '@/components/home/NewsCard.vue'
+import TestimonialSlider from '@/components/home/TestimonialSlider.vue'
+import TrendingVillages from '@/components/home/TrendingVillages.vue'
+import QuickAccessCards from '@/components/home/QuickAccessCards.vue'
+import { desaDetail, proyekData, formatRupiah } from '@/data/mockData.js'
+import { 
+  statistikNasional, 
+  beritaUpdates, 
+  testimonials, 
+  trendingDesa 
+} from '@/data/extendedMockData.js'
 
-const route = useRoute()
 const router = useRouter()
+const route = useRoute()
 const reportModal = ref(null)
 const selectedDesaId = ref(null)
 const isLoading = ref(false)
+
+// Animation refs
+const statsVisible = ref(false)
+const statsSection = ref(null)
 
 // Check if we have a desa ID from route
 onMounted(() => {
   if (route.params.id) {
     selectDesa(route.params.id)
   }
+  
+  // Intersection observer for stats animation
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          statsVisible.value = true
+        }
+      })
+    },
+    { threshold: 0.2 }
+  )
+  
+  if (statsSection.value) {
+    observer.observe(statsSection.value)
+  }
+  
+  onUnmounted(() => {
+    observer.disconnect()
+  })
 })
 
 const selectedDesa = computed(() => {
@@ -50,14 +85,116 @@ const backToSearch = () => {
 const openReport = () => {
   reportModal.value?.openModal()
 }
+
+const navigateTo = (path) => {
+  router.push(path)
+}
 </script>
 
 <template>
   <div class="home-page">
     <!-- Show search if no desa selected -->
     <template v-if="!selectedDesa">
-      <HeroSearch @selectDesa="selectDesa" />
-      
+      <!-- Hero Section with Dynamic Stats -->
+      <section class="hero-section">
+        <div class="hero-background">
+          <div class="hero-gradient"></div>
+          <div class="hero-particles">
+            <span v-for="i in 20" :key="i" class="particle"></span>
+          </div>
+        </div>
+        
+        <div class="container hero-content">
+          <div class="hero-badge">
+            <span class="badge-icon">🏆</span>
+            <span>Platform Transparansi Dana Desa #1 di Indonesia</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Pantau <span class="gradient-text">Dana Desa</span>
+            <br>dengan Mudah & Transparan
+          </h1>
+          
+          <p class="hero-subtitle">
+            Akses data anggaran, proyek pembangunan, dan bantuan sosial dari 
+            {{ statistikNasional.totalDesa.toLocaleString('id-ID') }} desa di seluruh Indonesia
+          </p>
+          
+          <HeroSearch @selectDesa="selectDesa" class="hero-search" />
+          
+          <!-- Mini Stats -->
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="stat-value">{{ statistikNasional.totalDesa.toLocaleString('id-ID') }}</span>
+              <span class="stat-label">Desa Terdaftar</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-value">Rp {{ (statistikNasional.totalDanaDesa / 1000000000000).toFixed(0) }}T</span>
+              <span class="stat-label">Dana Dikelola</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-value">{{ statistikNasional.totalLaporan.toLocaleString('id-ID') }}</span>
+              <span class="stat-label">Laporan Aktif</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Access Cards -->
+      <QuickAccessCards @navigate="navigateTo" @openReport="openReport" />
+
+      <!-- Statistics Counter Section -->
+      <section ref="statsSection" class="stats-section">
+        <div class="container">
+          <h2 class="section-title">Pantau Desa dalam Angka</h2>
+          <p class="section-subtitle">Update data real-time dari seluruh Indonesia</p>
+          
+          <div class="stats-grid">
+            <div class="stat-card stat-card--primary">
+              <div class="stat-icon">🏘️</div>
+              <AnimatedCounter 
+                :value="statistikNasional.desaTerdaftar" 
+                :animate="statsVisible"
+                suffix="+"
+              />
+              <span class="stat-label">Desa Terdaftar</span>
+            </div>
+            
+            <div class="stat-card stat-card--secondary">
+              <div class="stat-icon">📊</div>
+              <AnimatedCounter 
+                :value="statistikNasional.totalProyek" 
+                :animate="statsVisible"
+              />
+              <span class="stat-label">Proyek Terlaksana</span>
+            </div>
+            
+            <div class="stat-card stat-card--accent">
+              <div class="stat-icon">💰</div>
+              <AnimatedCounter 
+                :value="72" 
+                :animate="statsVisible"
+                prefix="Rp "
+                suffix=" Triliun"
+              />
+              <span class="stat-label">Total Dana Desa</span>
+            </div>
+            
+            <div class="stat-card stat-card--success">
+              <div class="stat-icon">✅</div>
+              <AnimatedCounter 
+                :value="statistikNasional.laporanSelesai" 
+                :animate="statsVisible"
+              />
+              <span class="stat-label">Laporan Ditindaklanjuti</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trending Villages -->
+      <TrendingVillages :villages="trendingDesa" @selectDesa="selectDesa" />
+
       <!-- Features Section -->
       <section class="features-section">
         <div class="container">
@@ -112,6 +249,35 @@ const openReport = () => {
         </div>
       </section>
 
+      <!-- News & Updates -->
+      <section class="news-section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Berita & Update Terbaru</h2>
+              <p class="section-subtitle">Informasi terkini seputar dana desa di Indonesia</p>
+            </div>
+            <router-link to="/berita" class="btn btn-outline btn-sm">
+              Lihat Semua
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </router-link>
+          </div>
+          
+          <div class="news-grid">
+            <NewsCard 
+              v-for="berita in beritaUpdates.slice(0, 4)" 
+              :key="berita.id" 
+              :berita="berita"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <TestimonialSlider :testimonials="testimonials" />
+
       <!-- CTA Section -->
       <section class="cta-section">
         <div class="container">
@@ -127,7 +293,7 @@ const openReport = () => {
                 </svg>
                 Buat Laporan
               </button>
-              <router-link to="/lapor" class="btn btn-outline btn-lg">
+              <router-link to="/lapor" class="btn btn-outline-light btn-lg">
                 Lacak Status Laporan
               </router-link>
             </div>
@@ -155,11 +321,223 @@ const openReport = () => {
 </template>
 
 <style scoped>
-/* Features Section */
-.features-section {
-  padding: var(--spacing-2xl) 0;
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--navbar-height) + var(--spacing-2xl)) 0 var(--spacing-3xl);
+  overflow: hidden;
 }
 
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero);
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: float 15s infinite;
+}
+
+.particle:nth-child(odd) {
+  animation-duration: 20s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.particle:nth-child(1) { left: 5%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 10%; animation-delay: 1s; }
+.particle:nth-child(3) { left: 15%; animation-delay: 2s; }
+.particle:nth-child(4) { left: 20%; animation-delay: 3s; }
+.particle:nth-child(5) { left: 25%; animation-delay: 4s; }
+.particle:nth-child(6) { left: 30%; animation-delay: 0.5s; }
+.particle:nth-child(7) { left: 35%; animation-delay: 1.5s; }
+.particle:nth-child(8) { left: 40%; animation-delay: 2.5s; }
+.particle:nth-child(9) { left: 45%; animation-delay: 3.5s; }
+.particle:nth-child(10) { left: 50%; animation-delay: 4.5s; }
+.particle:nth-child(11) { left: 55%; animation-delay: 0.25s; }
+.particle:nth-child(12) { left: 60%; animation-delay: 1.25s; }
+.particle:nth-child(13) { left: 65%; animation-delay: 2.25s; }
+.particle:nth-child(14) { left: 70%; animation-delay: 3.25s; }
+.particle:nth-child(15) { left: 75%; animation-delay: 4.25s; }
+.particle:nth-child(16) { left: 80%; animation-delay: 0.75s; }
+.particle:nth-child(17) { left: 85%; animation-delay: 1.75s; }
+.particle:nth-child(18) { left: 90%; animation-delay: 2.75s; }
+.particle:nth-child(19) { left: 95%; animation-delay: 3.75s; }
+.particle:nth-child(20) { left: 100%; animation-delay: 4.75s; }
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-lg);
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.badge-icon {
+  font-size: 1.2em;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-lg);
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #F472B6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-lg);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-xl);
+  opacity: 0.9;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.hero-search {
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-stat .stat-value {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.hero-stat .stat-label {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .hero-stats {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .hero-stat {
+    flex-direction: row;
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Stats Section */
+.stats-section {
+  padding: var(--spacing-3xl) 0;
+  background: var(--color-surface);
+}
+
+.stats-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-card {
+  background: var(--gradient-card);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  text-align: center;
+  border: 1px solid var(--color-border-light);
+  transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-card .stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.stat-card .stat-label {
+  display: block;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.stat-card--primary { border-top: 3px solid var(--color-primary); }
+.stat-card--secondary { border-top: 3px solid var(--color-secondary); }
+.stat-card--accent { border-top: 3px solid var(--color-accent); }
+.stat-card--success { border-top: 3px solid var(--color-success); }
+
+/* Section Styles */
 .section-title {
   text-align: center;
   font-size: var(--font-size-2xl);
@@ -171,6 +549,35 @@ const openReport = () => {
   color: var(--color-text-secondary);
   max-width: 500px;
   margin: 0 auto var(--spacing-xl);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.section-header .section-title,
+.section-header .section-subtitle {
+  text-align: left;
+  margin: 0;
+}
+
+.section-header .section-subtitle {
+  margin-top: var(--spacing-xs);
+}
+
+.section-header .btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Features Section */
+.features-section {
+  padding: var(--spacing-3xl) 0;
 }
 
 .features-grid {
@@ -254,10 +661,33 @@ const openReport = () => {
   line-height: 1.6;
 }
 
+/* News Section */
+.news-section {
+  padding: var(--spacing-3xl) 0;
+  background: var(--color-surface);
+}
+
+.news-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* CTA Section */
 .cta-section {
-  padding: var(--spacing-2xl) 0;
-  background-color: var(--color-surface);
+  padding: var(--spacing-3xl) 0;
 }
 
 .cta-card {
@@ -286,6 +716,7 @@ const openReport = () => {
 .cta-content h2 {
   color: white;
   margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-2xl);
 }
 
 .cta-content p {
@@ -306,18 +737,37 @@ const openReport = () => {
   }
 }
 
-.cta-actions .btn-outline {
-  border-color: white;
+.btn-outline-light {
+  background: transparent;
   color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-.cta-actions .btn-outline:hover {
-  background-color: white;
-  color: var(--color-primary);
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
 }
 
-.cta-actions .btn svg {
-  width: 20px;
-  height: 20px;
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

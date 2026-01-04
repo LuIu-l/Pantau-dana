@@ -1,4 +1,4 @@
 // Pinia stores barrel export
-export { useReportStore } from './reports.js'
-export { useFavoritesStore } from './favorites.js'
-export { useSettingsStore } from './settings.js'
+export { useReportsStore } from './reports.js'
+export { useUserStore } from './user.js'
+export { useNotificationsStore } from './notifications.js'

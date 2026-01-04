@@ -97,6 +97,6 @@ const goHome = () => {
 }
 
 .loading-page p {
-  color: var(--color-text-secondary);
+  color: var(--color-text-secondary)\;
 }
 </style>

@@ -8,6 +8,11 @@ const ReportPage = () => import('@/views/ReportPage.vue')
 const PrivacyPolicyPage = () => import('@/views/PrivacyPolicyPage.vue')
 const TermsOfServicePage = () => import('@/views/TermsOfServicePage.vue')
 const NotFoundPage = () => import('@/views/NotFoundPage.vue')
+const MapPage = () => import('@/views/MapPage.vue')
+const StatisticsPage = () => import('@/views/StatisticsPage.vue')
+const TrackingPage = () => import('@/views/TrackingPage.vue')
+const HelpPage = () => import('@/views/HelpPage.vue')
+const SettingsPage = () => import('@/views/SettingsPage.vue')
 
 const routes = [
   {
@@ -25,6 +30,33 @@ const routes = [
     component: HomePage,
     meta: {
       title: 'Detail Desa - Pantau Dana Desa'
+    }
+  },
+  {
+    path: '/peta',
+    name: 'map',
+    component: MapPage,
+    meta: {
+      title: 'Peta Interaktif - Pantau Dana Desa',
+      description: 'Jelajahi peta transparansi dana desa seluruh Indonesia'
+    }
+  },
+  {
+    path: '/statistik',
+    name: 'statistics',
+    component: StatisticsPage,
+    meta: {
+      title: 'Statistik & Analytics - Pantau Dana Desa',
+      description: 'Dashboard statistik dan analisis data dana desa'
+    }
+  },
+  {
+    path: '/lacak-all',
+    name: 'tracking',
+    component: TrackingPage,
+    meta: {
+      title: 'Lacak Laporan - Pantau Dana Desa',
+      description: 'Lacak dan kelola semua laporan Anda'
     }
   },
   {
@@ -52,6 +84,24 @@ const routes = [
     meta: {
       title: 'Lapor - Pantau Dana Desa',
       description: 'Laporkan dugaan penyimpangan penggunaan dana desa'
+    }
+  },
+  {
+    path: '/bantuan',
+    name: 'help',
+    component: HelpPage,
+    meta: {
+      title: 'Pusat Bantuan - Pantau Dana Desa',
+      description: 'FAQ, tutorial, dan dukungan untuk pengguna'
+    }
+  },
+  {
+    path: '/pengaturan',
+    name: 'settings',
+    component: SettingsPage,
+    meta: {
+      title: 'Pengaturan - Pantau Dana Desa',
+      description: 'Kelola profil dan preferensi akun Anda'
     }
   },
   {

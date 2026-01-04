@@ -118,67 +118,67 @@
 /* Dark Mode Variables */
 [data-theme="dark"] {
   /* Primary Colors - Adjusted for dark mode */
-  --color-primary: #60A5FA;
-  --color-primary-dark: #3B82F6;
-  --color-primary-light: #93C5FD;
-  --color-primary-50: rgba(59, 130, 246, 0.1);
-  --color-primary-100: rgba(59, 130, 246, 0.2);
-  --color-primary-200: rgba(59, 130, 246, 0.3);
+  --color-primary: #3B82F6;
+  --color-primary-dark: #2563EB;
+  --color-primary-light: #60A5FA;
+  --color-primary-50: rgba(59, 130, 246, 0.15);
+  --color-primary-100: rgba(59, 130, 246, 0.25);
+  --color-primary-200: rgba(59, 130, 246, 0.35);
   
   /* Secondary Colors */
-  --color-secondary: #34D399;
-  --color-secondary-dark: #10B981;
-  --color-secondary-light: #6EE7B7;
-  --color-secondary-50: rgba(16, 185, 129, 0.1);
+  --color-secondary: #10B981;
+  --color-secondary-dark: #059669;
+  --color-secondary-light: #34D399;
+  --color-secondary-50: rgba(16, 185, 129, 0.15);
   
   /* Accent Colors */
-  --color-accent: #A78BFA;
-  --color-accent-dark: #8B5CF6;
-  --color-accent-light: #C4B5FD;
-  --color-accent-50: rgba(139, 92, 246, 0.1);
+  --color-accent: #8B5CF6;
+  --color-accent-dark: #7C3AED;
+  --color-accent-light: #A78BFA;
+  --color-accent-50: rgba(139, 92, 246, 0.15);
   
   /* Alert/Warning Colors */
-  --color-alert: #FBBF24;
-  --color-alert-dark: #F59E0B;
-  --color-alert-light: #FCD34D;
+  --color-alert: #F59E0B;
+  --color-alert-dark: #D97706;
+  --color-alert-light: #FBBF24;
   
   /* Status Colors */
   --color-success: #34D399;
   --color-warning: #FBBF24;
-  --color-warning-50: rgba(251, 191, 36, 0.1);
+  --color-warning-50: rgba(251, 191, 36, 0.15);
   --color-danger: #F87171;
   --color-info: #60A5FA;
   
-  /* Neutral Colors - Dark Mode */
+  /* Neutral Colors - Dark Mode (Slate/Blue-ish Gray for better aesthetics) */
   --color-background: #0F172A;
   --color-surface: #1E293B;
   --color-surface-elevated: #334155;
-  --color-border: #475569;
-  --color-border-light: #334155;
-  --color-text-primary: #F1F5F9;
+  --color-border: #334155;
+  --color-border-light: #1E293B;
+  --color-text-primary: #F8FAFC;
   --color-text-secondary: #CBD5E1;
   --color-text-muted: #94A3B8;
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
-  --gradient-secondary: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
-  --gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  --gradient-dark: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  --gradient-card: linear-gradient(145deg, #1E293B 0%, #334155 100%);
-  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+  --gradient-primary: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  --gradient-secondary: linear-gradient(135deg, #059669 0%, #2563EB 100%);
+  --gradient-hero: linear-gradient(135deg, #020617 0%, #0F172A 100%);
+  --gradient-dark: linear-gradient(135deg, #020617 0%, #0F172A 100%);
+  --gradient-card: linear-gradient(145deg, #1E293B 0%, #0F172A 100%);
+  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
   
   /* Navbar */
-  --navbar-bg: rgba(15, 23, 42, 0.95);
-  --navbar-bg-scrolled: rgba(15, 23, 42, 0.98);
+  --navbar-bg: rgba(15, 23, 42, 0.85);
+  --navbar-bg-scrolled: rgba(15, 23, 42, 0.95);
   
   /* Shadows - softer for dark mode */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.2);
-  --shadow-glow-success: 0 0 40px rgba(16, 185, 129, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.1);
+  --shadow-glow-success: 0 0 40px rgba(16, 185, 129, 0.1);
 }
 
 /* Reset & Base Styles */
