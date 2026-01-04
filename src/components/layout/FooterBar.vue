@@ -48,10 +48,10 @@
               Navigasi
             </h4>
             <ul>
-              <li><a href="#" @click.prevent="$emit('navigate', 'home')">Beranda</a></li>
-              <li><a href="#" @click.prevent="$emit('navigate', 'bansos')">Cek Penerima Bansos</a></li>
-              <li><a href="#" @click.prevent="$emit('navigate', 'lacak')">Lacak Laporan</a></li>
-              <li><a href="#" @click.prevent="$emit('navigate', 'education')">Edukasi</a></li>
+              <li><router-link to="/">Beranda</router-link></li>
+              <li><router-link to="/bansos">Cek Penerima Bansos</router-link></li>
+              <li><router-link to="/lapor">Lacak Laporan</router-link></li>
+              <li><router-link to="/edukasi">Edukasi</router-link></li>
             </ul>
           </div>
           
@@ -64,10 +64,10 @@
               Informasi
             </h4>
             <ul>
-              <li><a href="#" @click.prevent="$emit('navigate', 'home')">Tentang Kami</a></li>
-              <li><a href="#" @click.prevent="$emit('navigate', 'edukasi')">Cara Penggunaan</a></li>
-              <li><a href="#" @click.prevent="$emit('navigate', 'edukasi')">FAQ</a></li>
-              <li><a href="#" @click.prevent="$emit('navigate', 'privacy')">Kebijakan Privasi</a></li>
+              <li><router-link to="/">Tentang Kami</router-link></li>
+              <li><router-link to="/edukasi">Cara Penggunaan</router-link></li>
+              <li><router-link to="/edukasi">FAQ</router-link></li>
+              <li><router-link to="/privasi">Kebijakan Privasi</router-link></li>
             </ul>
           </div>
           
@@ -125,8 +125,6 @@
 
 <script setup>
 import { computed } from 'vue'
-
-defineEmits(['navigate'])
 
 const currentYear = computed(() => new Date().getFullYear())
 </script>

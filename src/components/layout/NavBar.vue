@@ -1,7 +1,7 @@
 <template>
   <header class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
     <div class="container navbar-content">
-      <a href="#" class="navbar-brand" @click.prevent="$emit('navigate', 'home')">
+      <router-link to="/" class="navbar-brand">
         <div class="logo-wrapper">
           <div class="logo-icon">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,35 +24,35 @@
             <span class="brand-badge">BETA</span>
           </div>
         </div>
-      </a>
+      </router-link>
       
       <nav class="navbar-nav" :class="{ 'is-open': isMenuOpen }">
-        <a 
+        <router-link 
           v-for="item in navItems"
           :key="item.id"
-          href="#" 
-          class="nav-link" 
-          :class="{ active: currentPage === item.id }"
-          @click.prevent="navigate(item.id)"
+          :to="item.path" 
+          class="nav-link"
+          :class="{ active: isActive(item.path) }"
+          @click="isMenuOpen = false"
         >
           <span class="nav-icon" v-html="item.icon"></span>
           <span class="nav-text">{{ item.label }}</span>
           <span v-if="item.badge" class="nav-badge">{{ item.badge }}</span>
-        </a>
+        </router-link>
       </nav>
 
       <div class="navbar-actions">
-        <button class="theme-toggle" @click="toggleDarkMode" title="Toggle theme">
-          <svg v-if="!isDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="theme-toggle" @click="toggleDarkMode" :title="isDark ? 'Mode terang' : 'Mode gelap'" :aria-label="isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap'">
+          <svg v-if="!isDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="12" cy="12" r="5"/>
             <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
           </svg>
-          <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
         </button>
 
-        <button class="navbar-toggle" @click="isMenuOpen = !isMenuOpen" aria-label="Toggle menu">
+        <button class="navbar-toggle" @click="isMenuOpen = !isMenuOpen" :aria-label="isMenuOpen ? 'Tutup menu' : 'Buka menu'" :aria-expanded="isMenuOpen">
           <div class="hamburger" :class="{ 'is-active': isMenuOpen }">
             <span></span>
             <span></span>
@@ -71,16 +71,9 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 
-defineProps({
-  currentPage: {
-    type: String,
-    default: 'home'
-  }
-})
-
-const emit = defineEmits(['navigate'])
-
+const route = useRoute()
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 const isDark = ref(false)
@@ -88,35 +81,35 @@ const isDark = ref(false)
 const navItems = [
   {
     id: 'home',
+    path: '/',
     label: 'Beranda',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>'
   },
   {
     id: 'bansos',
+    path: '/bansos',
     label: 'Cek Bansos',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
   },
   {
-    id: 'lacak',
-    label: 'Lacak Laporan',
+    id: 'lapor',
+    path: '/lapor',
+    label: 'Laporan',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'
   },
   {
     id: 'edukasi',
+    path: '/edukasi',
     label: 'Edukasi',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>'
-  },
-  {
-    id: 'laporan-bansos',
-    label: 'Laporan',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>',
-    badge: 'Baru'
   }
 ]
 
-const navigate = (page) => {
-  emit('navigate', page)
-  isMenuOpen.value = false
+const isActive = (path) => {
+  if (path === '/') {
+    return route.path === '/' || route.path.startsWith('/desa/')
+  }
+  return route.path.startsWith(path)
 }
 
 const toggleDarkMode = () => {

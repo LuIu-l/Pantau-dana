@@ -3,21 +3,27 @@
 Platform transparansi Dana Desa dan Bantuan Sosial untuk Indonesia yang lebih baik dan transparan.
 
 ![Vue.js](https://img.shields.io/badge/Vue.js-3.5-4FC08D?style=flat&logo=vue.js)
-![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?style=flat&logo=vite)
-![Frontend Only](https://img.shields.io/badge/Mode-Frontend%20Only-blue)
+![Vite](https://img.shields.io/badge/Vite-7.3-646CFF?style=flat&logo=vite)
+![Pinia](https://img.shields.io/badge/Pinia-3.0-yellow?style=flat)
+![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=flat)
+![Vitest](https://img.shields.io/badge/Vitest-4.0-729B1B?style=flat&logo=vitest)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 
-> **💡 Note:** Aplikasi ini berjalan sepenuhnya di frontend (client-side) tanpa memerlukan database atau backend server. Semua data disimpan di **localStorage** browser dan menggunakan **mock data** untuk demonstrasi.
+> **💡 Note:** Aplikasi ini berjalan sepenuhnya di frontend (client-side) dengan data disimpan di **IndexedDB** browser. Mendukung mode offline sebagai Progressive Web App (PWA).
+
+## 🚀 Demo
+
+🌐 **Live Demo:** [https://pantau-dana.vercel.app](https://pantau-dana.vercel.app)
 
 ## 📋 Daftar Isi
 
 - [Fitur](#-fitur)
 - [Teknologi](#-teknologi)
-- [Persyaratan](#-persyaratan)
+- [Arsitektur](#-arsitektur)
 - [Instalasi](#-instalasi)
-- [Konfigurasi](#-konfigurasi)
-- [Menjalankan Aplikasi](#-menjalankan-aplikasi)
+- [Perintah](#-perintah)
 - [Struktur Proyek](#-struktur-proyek)
-- [API Endpoints](#-api-endpoints)
+- [Testing](#-testing)
 - [Kontribusi](#-kontribusi)
 - [Lisensi](#-lisensi)
 
@@ -48,6 +54,11 @@ Platform transparansi Dana Desa dan Bantuan Sosial untuk Indonesia yang lebih ba
 - Artikel tentang Dana Desa dan hak warga
 - Panduan pengawasan dana publik
 - FAQ seputar bantuan sosial
+
+### 📱 Progressive Web App (PWA)
+- Install di perangkat mobile/desktop
+- Offline support
+- Push notifications (coming soon)
 
 ## 🛠️ Teknologi
 
