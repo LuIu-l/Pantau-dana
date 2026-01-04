@@ -10,12 +10,10 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  // Base URL untuk GitHub Pages
-  base: '/Pantau-dana/',
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    // Optimasi untuk production
     minify: 'esbuild',
     sourcemap: false,
     rollupOptions: {
