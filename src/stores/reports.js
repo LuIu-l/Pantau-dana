@@ -124,3 +124,6 @@ export const useReportStore = defineStore('reports', () => {
     findReportByTicket
   }
 })
+
+// Alias untuk backward compatibility
+export const useReportsStore = useReportStore
