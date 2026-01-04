@@ -79,7 +79,10 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: '/',
+  // GitHub Pages: jika deploy ke https://username.github.io/repo-name/
+  // Ganti '/Pantau-dana/' dengan nama repository Anda
+  // Jika deploy ke https://username.github.io/, gunakan base: '/'
+  base: process.env.NODE_ENV === 'production' ? '/Pantau-dana/' : '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
