@@ -1,4 +1,5 @@
 <script setup>
+// Pantau Dana - Terms of Service Page
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

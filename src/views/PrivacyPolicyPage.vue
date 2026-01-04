@@ -1,4 +1,5 @@
 <script setup>
+// Pantau Dana - Privacy Policy Page
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
