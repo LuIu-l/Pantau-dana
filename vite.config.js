@@ -9,5 +9,22 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  // Base URL untuk GitHub Pages
+  // Ganti 'Pantau-dana' dengan nama repository GitHub Anda
+  base: process.env.NODE_ENV === 'production' ? '/Pantau-dana/' : '/',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    // Optimasi untuk production
+    minify: 'terser',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vue-vendor': ['vue']
+        }
+      }
+    }
   }
 })

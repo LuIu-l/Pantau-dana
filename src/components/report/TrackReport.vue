@@ -175,8 +175,22 @@ const searchReport = async () => {
   // Simulate API call
   await new Promise(resolve => setTimeout(resolve, 800))
   
-  // Search in mock data
-  report.value = laporanData.find(r => r.kode_tiket === ticketCode.value.toUpperCase()) || null
+  try {
+    // Cari di localStorage terlebih dahulu
+    const savedReports = JSON.parse(localStorage.getItem('pantau_desa_reports') || '[]')
+    const foundInStorage = savedReports.find(r => r.kode_tiket === ticketCode.value.toUpperCase())
+    
+    if (foundInStorage) {
+      report.value = foundInStorage
+    } else {
+      // Fallback ke mock data
+      report.value = laporanData.find(r => r.kode_tiket === ticketCode.value.toUpperCase()) || null
+    }
+  } catch (error) {
+    console.error('Error searching report:', error)
+    // Fallback ke mock data jika localStorage error
+    report.value = laporanData.find(r => r.kode_tiket === ticketCode.value.toUpperCase()) || null
+  }
   
   isSearching.value = false
   hasSearched.value = true

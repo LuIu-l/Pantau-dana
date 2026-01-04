@@ -1,0 +1,12 @@
+# Robots.txt for Pantau Desa
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Disallow admin and API paths
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://pantaudesa.id/sitemap.xml

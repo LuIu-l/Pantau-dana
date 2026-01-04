@@ -16,17 +16,6 @@ dist
 dist-ssr
 *.local
 
-# Environment variables
-.env
-.env.local
-.env.production
-.env.development
-
-# Uploads and user data
-uploads/
-server/uploads/
-*.uploaded
-
 # Cache
 .cache
 .vite

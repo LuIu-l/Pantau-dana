@@ -286,8 +286,16 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, inject } from 'vue'
 import { kategoriLaporan, generateTicketCode } from '@/data/mockData.js'
+
+// Inject toast from parent
+const toast = inject('toast', {
+  success: (msg) => console.log('Success:', msg),
+  error: (msg) => console.error('Error:', msg),
+  warning: (msg) => console.warn('Warning:', msg),
+  info: (msg) => console.info('Info:', msg)
+})
 
 const isModalOpen = ref(false)
 const currentStep = ref(0)
@@ -357,32 +365,34 @@ const handleSubmit = async () => {
   
   isSubmitting.value = true
   
+  // Simulasi delay untuk realistis
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  
   try {
-    const data = new FormData()
-    data.append('category', formData.value.kategori)
-    data.append('location', formData.value.lokasi)
-    data.append('description', formData.value.deskripsi)
-    
-    if (formData.value.files.length > 0) {
-      data.append('image', formData.value.files[0])
-    }
-
-    const response = await fetch('http://localhost:3000/api/reports', {
-      method: 'POST',
-      body: data
-    })
-
-    if (!response.ok) {
-      throw new Error('Gagal mengirim laporan')
-    }
-
-    // const result = await response.json() // We can use result.reportId if needed
-    
+    // Generate ticket code
     ticketCode.value = generateTicketCode()
+    
+    // Simpan laporan ke localStorage (simulasi database)
+    const report = {
+      kode_tiket: ticketCode.value,
+      kategori: formData.value.kategori,
+      lokasi: formData.value.lokasi,
+      deskripsi: formData.value.deskripsi,
+      status: 'pending',
+      tanggal: new Date().toISOString(),
+      foto: formData.value.files.length > 0 ? formData.value.files[0].name : null
+    }
+    
+    // Ambil laporan yang sudah ada
+    const existingReports = JSON.parse(localStorage.getItem('pantau_desa_reports') || '[]')
+    existingReports.push(report)
+    localStorage.setItem('pantau_desa_reports', JSON.stringify(existingReports))
+    
     isSubmitted.value = true
+    toast.success('Laporan berhasil dikirim! Simpan kode tiket Anda.', 'Berhasil')
   } catch (error) {
     console.error('Error submitting report:', error)
-    alert('Gagal mengirim laporan. Pastikan server backend berjalan dan database terhubung.')
+    toast.error('Gagal mengirim laporan. Silakan coba lagi.', 'Gagal Mengirim')
   } finally {
     isSubmitting.value = false
   }
@@ -391,9 +401,10 @@ const handleSubmit = async () => {
 const copyTicketCode = async () => {
   try {
     await navigator.clipboard.writeText(ticketCode.value)
-    alert('Kode tiket berhasil disalin!')
+    toast.success('Kode tiket berhasil disalin ke clipboard!', 'Berhasil Disalin')
   } catch (err) {
     console.error('Failed to copy:', err)
+    toast.error('Gagal menyalin kode tiket', 'Error')
   }
 }
 

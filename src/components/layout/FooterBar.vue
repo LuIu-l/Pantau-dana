@@ -64,10 +64,10 @@
               Informasi
             </h4>
             <ul>
-              <li><a href="#">Tentang Kami</a></li>
-              <li><a href="#">Cara Penggunaan</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Kebijakan Privasi</a></li>
+              <li><a href="#" @click.prevent="$emit('navigate', 'home')">Tentang Kami</a></li>
+              <li><a href="#" @click.prevent="$emit('navigate', 'edukasi')">Cara Penggunaan</a></li>
+              <li><a href="#" @click.prevent="$emit('navigate', 'edukasi')">FAQ</a></li>
+              <li><a href="#" @click.prevent="$emit('navigate', 'privacy')">Kebijakan Privasi</a></li>
             </ul>
           </div>
           
@@ -108,11 +108,11 @@
         <div class="footer-bottom-content">
           <p>&copy; {{ currentYear }} Pantau Desa. Dibuat dengan ❤️ untuk Indonesia 🇮🇩</p>
           <div class="footer-bottom-links">
-            <a href="#">Syarat & Ketentuan</a>
+            <a href="#" @click.prevent="$emit('navigate', 'terms')">Syarat & Ketentuan</a>
             <span>•</span>
-            <a href="#">Privasi</a>
+            <a href="#" @click.prevent="$emit('navigate', 'privacy')">Privasi</a>
             <span>•</span>
-            <a href="#">Peta Situs</a>
+            <a href="#" @click.prevent="$emit('navigate', 'home')">Peta Situs</a>
           </div>
         </div>
         <p class="footer-disclaimer">

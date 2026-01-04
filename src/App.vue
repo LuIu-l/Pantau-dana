@@ -1,20 +1,34 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, defineAsyncComponent, provide } from 'vue'
 import NavBar from './components/layout/NavBar.vue'
 import FooterBar from './components/layout/FooterBar.vue'
 import HeroSearch from './components/search/HeroSearch.vue'
-import VillageSummary from './components/dashboard/VillageSummary.vue'
-import BudgetTracker from './components/dashboard/BudgetTracker.vue'
-import ProjectMap from './components/map/ProjectMap.vue'
-import BansosCheck from './components/bansos/BansosCheck.vue'
-import BansosExpenditure from './components/bansos/BansosExpenditure.vue'
-import EducationPage from './components/education/EducationPage.vue'
-import ReportModal from './components/report/ReportModal.vue'
-import TrackReport from './components/report/TrackReport.vue'
+import ToastNotification from './components/ui/ToastNotification.vue'
 import { desaDetail, proyekData } from './data/mockData.js'
+
+// Lazy load heavy components for better performance
+const VillageSummary = defineAsyncComponent(() => import('./components/dashboard/VillageSummary.vue'))
+const BudgetTracker = defineAsyncComponent(() => import('./components/dashboard/BudgetTracker.vue'))
+const ProjectMap = defineAsyncComponent(() => import('./components/map/ProjectMap.vue'))
+const BansosCheck = defineAsyncComponent(() => import('./components/bansos/BansosCheck.vue'))
+const BansosExpenditure = defineAsyncComponent(() => import('./components/bansos/BansosExpenditure.vue'))
+const EducationPage = defineAsyncComponent(() => import('./components/education/EducationPage.vue'))
+const ReportModal = defineAsyncComponent(() => import('./components/report/ReportModal.vue'))
+const TrackReport = defineAsyncComponent(() => import('./components/report/TrackReport.vue'))
+const PrivacyPolicy = defineAsyncComponent(() => import('./components/legal/PrivacyPolicy.vue'))
+const TermsOfService = defineAsyncComponent(() => import('./components/legal/TermsOfService.vue'))
 
 const currentPage = ref('home')
 const selectedDesaId = ref(null)
+const toastRef = ref(null)
+
+// Provide toast to child components
+provide('toast', {
+  success: (msg, title) => toastRef.value?.success(msg, title),
+  error: (msg, title) => toastRef.value?.error(msg, title),
+  warning: (msg, title) => toastRef.value?.warning(msg, title),
+  info: (msg, title) => toastRef.value?.info(msg, title)
+})
 
 const selectedDesa = computed(() => {
   if (!selectedDesaId.value) return null
@@ -168,12 +182,25 @@ const backToSearch = () => {
       <template v-else-if="currentPage === 'laporan-bansos'">
         <BansosExpenditure />
       </template>
+
+      <!-- Privacy Policy Page -->
+      <template v-else-if="currentPage === 'privacy'">
+        <PrivacyPolicy @navigate="navigate" />
+      </template>
+
+      <!-- Terms of Service Page -->
+      <template v-else-if="currentPage === 'terms'">
+        <TermsOfService @navigate="navigate" />
+      </template>
     </main>
 
     <FooterBar @navigate="navigate" />
     
     <!-- Report Modal (Global) -->
     <ReportModal ref="reportModal" />
+    
+    <!-- Toast Notifications (Global) -->
+    <ToastNotification ref="toastRef" />
   </div>
 </template>
 
