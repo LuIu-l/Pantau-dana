@@ -11,13 +11,12 @@ export default defineConfig({
     }
   },
   // Base URL untuk GitHub Pages
-  // Ganti 'Pantau-dana' dengan nama repository GitHub Anda
-  base: process.env.NODE_ENV === 'production' ? '/Pantau-dana/' : '/',
+  base: '/Pantau-dana/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     // Optimasi untuk production
-    minify: 'terser',
+    minify: 'esbuild',
     sourcemap: false,
     rollupOptions: {
       output: {
