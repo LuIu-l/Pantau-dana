@@ -1,9 +1,10 @@
 <script setup>
-import { ref, computed, defineAsyncComponent, provide } from 'vue'
+import { ref, computed, defineAsyncComponent, provide, onMounted } from 'vue'
 import NavBar from './components/layout/NavBar.vue'
 import FooterBar from './components/layout/FooterBar.vue'
 import HeroSearch from './components/search/HeroSearch.vue'
 import ToastNotification from './components/ui/ToastNotification.vue'
+import ErrorBoundary from './components/ui/ErrorBoundary.vue'
 import { desaDetail, proyekData } from './data/mockData.js'
 
 // Lazy load heavy components for better performance
@@ -21,13 +22,20 @@ const TermsOfService = defineAsyncComponent(() => import('./components/legal/Ter
 const currentPage = ref('home')
 const selectedDesaId = ref(null)
 const toastRef = ref(null)
+const isLoading = ref(false)
 
-// Provide toast to child components
-provide('toast', {
+// Provide toast to child components and set global reference
+const toastMethods = {
   success: (msg, title) => toastRef.value?.success(msg, title),
   error: (msg, title) => toastRef.value?.error(msg, title),
   warning: (msg, title) => toastRef.value?.warning(msg, title),
   info: (msg, title) => toastRef.value?.info(msg, title)
+}
+provide('toast', toastMethods)
+
+// Set global toast reference for error handler
+onMounted(() => {
+  window.__TOAST__ = toastMethods
 })
 
 const selectedDesa = computed(() => {
@@ -47,16 +55,27 @@ const navigate = (page) => {
 }
 
 const selectDesa = (desaId) => {
+  isLoading.value = true
   selectedDesaId.value = desaId
   // Scroll to dashboard after selecting
   setTimeout(() => {
+    isLoading.value = false
     window.scrollTo({ top: 100, behavior: 'smooth' })
-  }, 100)
+  }, 300)
 }
 
 const backToSearch = () => {
   selectedDesaId.value = null
   window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+const handleErrorBoundaryRetry = () => {
+  // Reload current page/component
+  const tempPage = currentPage.value
+  currentPage.value = ''
+  setTimeout(() => {
+    currentPage.value = tempPage
+  }, 100)
 }
 </script>
 
@@ -65,10 +84,11 @@ const backToSearch = () => {
     <NavBar :currentPage="currentPage" @navigate="navigate" />
     
     <main class="main-content">
-      <!-- Home Page -->
-      <template v-if="currentPage === 'home'">
-        <!-- Show search if no desa selected -->
-        <template v-if="!selectedDesa">
+      <ErrorBoundary @retry="handleErrorBoundaryRetry" @go-home="navigate('home')">
+        <!-- Home Page -->
+        <template v-if="currentPage === 'home'">
+          <!-- Show search if no desa selected -->
+          <template v-if="!selectedDesa">
           <HeroSearch @selectDesa="selectDesa" />
           
           <!-- Features Section -->
@@ -192,6 +212,7 @@ const backToSearch = () => {
       <template v-else-if="currentPage === 'terms'">
         <TermsOfService @navigate="navigate" />
       </template>
+      </ErrorBoundary>
     </main>
 
     <FooterBar @navigate="navigate" />
