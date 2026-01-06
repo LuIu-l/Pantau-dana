@@ -7,7 +7,7 @@ const searchQuery = ref('')
 const expandedFaq = ref(null)
 const showChatWidget = ref(false)
 const chatMessages = ref([
-  { from: 'bot', text: 'Halo! 👋 Saya asisten virtual PantauDesa. Ada yang bisa saya bantu?' }
+  { from: 'bot', text: 'Halo! Saya asisten virtual PantauDesa. Ada yang bisa saya bantu?' }
 ])
 const chatInput = ref('')
 const contactForm = ref({
@@ -19,11 +19,11 @@ const contactForm = ref({
 
 // FAQ Categories
 const faqCategories = [
-  { id: 'dana-desa', label: 'Dana Desa', icon: '💰' },
-  { id: 'bansos', label: 'Bansos', icon: '🤝' },
-  { id: 'laporan', label: 'Pelaporan', icon: '📝' },
-  { id: 'tracking', label: 'Lacak Laporan', icon: '🔍' },
-  { id: 'akun', label: 'Akun', icon: '👤' }
+  { id: 'dana-desa', label: 'Dana Desa', icon: '○' },
+  { id: 'bansos', label: 'Bansos', icon: '◇' },
+  { id: 'laporan', label: 'Pelaporan', icon: '▤' },
+  { id: 'tracking', label: 'Lacak Laporan', icon: '◎' },
+  { id: 'akun', label: 'Akun', icon: '◯' }
 ]
 
 // FAQ Data
@@ -214,7 +214,7 @@ const quickChatOptions = [
       <div class="container">
         <div class="hero-content">
           <span class="hero-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="12" cy="12" r="10"/>
               <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
               <line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -226,7 +226,7 @@ const quickChatOptions = [
           
           <!-- Search Box -->
           <div class="search-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="11" cy="11" r="8"/>
               <path d="M21 21l-4.35-4.35"/>
             </svg>
@@ -274,7 +274,7 @@ const quickChatOptions = [
             <button class="faq-question" @click="toggleFaq(index)">
               <span class="faq-text">{{ faq.question }}</span>
               <span class="faq-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M6 9l6 6 6-6"/>
                 </svg>
               </span>
@@ -287,7 +287,7 @@ const quickChatOptions = [
           </div>
           
           <div v-if="filteredFaq.length === 0" class="no-results">
-            <span class="no-results-icon">🔍</span>
+            <span class="no-results-icon">◎</span>
             <p>Tidak ada hasil yang ditemukan untuk "{{ searchQuery }}"</p>
             <button class="btn-reset" @click="searchQuery = ''">Reset Pencarian</button>
           </div>
@@ -297,7 +297,7 @@ const quickChatOptions = [
       <!-- Video Tutorials -->
       <section class="videos-section">
         <div class="section-header">
-          <h2>🎬 Video Tutorial</h2>
+          <h2>▷ Video Tutorial</h2>
           <p>Panduan visual penggunaan aplikasi</p>
         </div>
         
@@ -330,7 +330,7 @@ const quickChatOptions = [
           <!-- Contact Form -->
           <div class="contact-form-card">
             <div class="card-header">
-              <h2>📩 Hubungi Kami</h2>
+              <h2>▧ Hubungi Kami</h2>
               <p>Masih ada pertanyaan? Kirim pesan dan tim kami akan membantu Anda.</p>
             </div>
             
@@ -363,7 +363,7 @@ const quickChatOptions = [
               </div>
               
               <button type="submit" class="btn-submit">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <line x1="22" y1="2" x2="11" y2="13"/>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"/>
                 </svg>
@@ -376,7 +376,7 @@ const quickChatOptions = [
           <div class="quick-contact">
             <div class="contact-card">
               <div class="contact-icon-wrapper email">
-                <span>📧</span>
+                <span>▧</span>
               </div>
               <div class="contact-info">
                 <h3>Email</h3>
@@ -386,7 +386,7 @@ const quickChatOptions = [
             
             <div class="contact-card">
               <div class="contact-icon-wrapper whatsapp">
-                <span>📱</span>
+                <span>▣</span>
               </div>
               <div class="contact-info">
                 <h3>WhatsApp</h3>
@@ -396,7 +396,7 @@ const quickChatOptions = [
             
             <div class="contact-card">
               <div class="contact-icon-wrapper office">
-                <span>🏢</span>
+                <span>▢</span>
               </div>
               <div class="contact-info">
                 <h3>Kantor</h3>
@@ -406,7 +406,7 @@ const quickChatOptions = [
             
             <div class="contact-card">
               <div class="contact-icon-wrapper time">
-                <span>⏰</span>
+                <span>◔</span>
               </div>
               <div class="contact-info">
                 <h3>Jam Operasional</h3>
@@ -424,7 +424,7 @@ const quickChatOptions = [
         <svg v-if="!showChatWidget" viewBox="0 0 24 24" fill="currentColor">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
-        <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <line x1="18" y1="6" x2="6" y2="18"/>
           <line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
@@ -433,13 +433,13 @@ const quickChatOptions = [
       <transition name="slide-up">
         <div v-if="showChatWidget" class="chat-window">
           <div class="chat-header">
-            <div class="chat-avatar">🤖</div>
+            <div class="chat-avatar">◎</div>
             <div class="chat-header-info">
               <h4>Asisten Virtual</h4>
               <span class="status">Online</span>
             </div>
             <button class="close-chat" @click="showChatWidget = false">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18"/>
                 <line x1="6" y1="6" x2="18" y2="18"/>
               </svg>

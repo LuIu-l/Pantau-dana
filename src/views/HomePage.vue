@@ -106,7 +106,7 @@ const navigateTo = (path) => {
         
         <div class="container hero-content">
           <div class="hero-badge">
-            <span class="badge-icon">🏆</span>
+            <span class="badge-icon">★</span>
             <span>Platform Transparansi Dana Desa #1 di Indonesia</span>
           </div>
           
@@ -151,7 +151,7 @@ const navigateTo = (path) => {
           
           <div class="stats-grid">
             <div class="stat-card stat-card--primary">
-              <div class="stat-icon">🏘️</div>
+              <div class="stat-icon">◇</div>
               <AnimatedCounter 
                 :value="statistikNasional.desaTerdaftar" 
                 :animate="statsVisible"
@@ -161,7 +161,7 @@ const navigateTo = (path) => {
             </div>
             
             <div class="stat-card stat-card--secondary">
-              <div class="stat-icon">📊</div>
+              <div class="stat-icon">◎</div>
               <AnimatedCounter 
                 :value="statistikNasional.totalProyek" 
                 :animate="statsVisible"
@@ -170,7 +170,7 @@ const navigateTo = (path) => {
             </div>
             
             <div class="stat-card stat-card--accent">
-              <div class="stat-icon">💰</div>
+              <div class="stat-icon">○</div>
               <AnimatedCounter 
                 :value="72" 
                 :animate="statsVisible"
@@ -181,7 +181,7 @@ const navigateTo = (path) => {
             </div>
             
             <div class="stat-card stat-card--success">
-              <div class="stat-icon">✅</div>
+              <div class="stat-icon">✓</div>
               <AnimatedCounter 
                 :value="statistikNasional.laporanSelesai" 
                 :animate="statsVisible"
@@ -204,9 +204,9 @@ const navigateTo = (path) => {
           <div class="features-grid">
             <div class="feature-card">
               <div class="feature-icon feature-icon--primary">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <circle cx="11" cy="11" r="8"/>
-                  <path d="M21 21l-4.35-4.35"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7"/>
+                  <path d="M21 21l-4-4"/>
                 </svg>
               </div>
               <h3>Mudah Diakses</h3>
@@ -215,9 +215,9 @@ const navigateTo = (path) => {
 
             <div class="feature-card">
               <div class="feature-icon feature-icon--secondary">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
-                  <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 3v9l6 3"/>
                 </svg>
               </div>
               <h3>Data Visual</h3>
@@ -226,8 +226,8 @@ const navigateTo = (path) => {
 
             <div class="feature-card">
               <div class="feature-icon feature-icon--warning">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M12 22s7-4 7-9V6l-7-3-7 3v7c0 5 7 9 7 9z"/>
                 </svg>
               </div>
               <h3>Aman & Terpercaya</h3>
@@ -236,10 +236,9 @@ const navigateTo = (path) => {
 
             <div class="feature-card">
               <div class="feature-icon feature-icon--danger">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
-                  <line x1="8" y1="2" x2="8" y2="18"/>
-                  <line x1="16" y1="6" x2="16" y2="22"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6z"/>
+                  <path d="M9 3v15M15 6v15"/>
                 </svg>
               </div>
               <h3>Peta Proyek</h3>
@@ -259,7 +258,7 @@ const navigateTo = (path) => {
             </div>
             <router-link to="/berita" class="btn btn-outline btn-sm">
               Lihat Semua
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </router-link>
@@ -288,7 +287,7 @@ const navigateTo = (path) => {
             </div>
             <div class="cta-actions">
               <button class="btn btn-alert btn-lg" @click="openReport">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                 </svg>
                 Buat Laporan

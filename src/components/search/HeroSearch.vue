@@ -8,8 +8,8 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s7-4 7-9V6l-7-3-7 3v7c0 5 7 9 7 9z"/>
           </svg>
           Platform Transparansi Dana Desa
         </div>
@@ -27,9 +27,9 @@
         <div class="search-card">
           <div class="card-header">
             <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="M21 21l-4.35-4.35"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="M21 21l-4-4"/>
               </svg>
             </div>
             <div class="card-title">
@@ -42,9 +42,9 @@
             <!-- Provinsi -->
             <div class="form-group">
               <label class="form-label" for="provinsi">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <circle cx="12" cy="10" r="3"/>
+                  <path d="M12 21c-4 0-7-5-7-11a7 7 0 0 1 14 0c0 6-3 11-7 11z"/>
                 </svg>
                 Provinsi
               </label>
@@ -65,8 +65,8 @@
                   </option>
                 </select>
                 <div class="select-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 9l6 6 6-6"/>
                   </svg>
                 </div>
               </div>
@@ -75,9 +75,9 @@
             <!-- Kabupaten -->
             <div class="form-group">
               <label class="form-label" for="kabupaten">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  <path d="M3 9h18M9 21V9"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="4" y="4" width="16" height="16" rx="2"/>
+                  <path d="M4 10h16M10 20V10"/>
                 </svg>
                 Kabupaten/Kota
               </label>
@@ -100,8 +100,8 @@
                   </option>
                 </select>
                 <div class="select-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 9l6 6 6-6"/>
                   </svg>
                 </div>
               </div>
@@ -110,10 +110,10 @@
             <!-- Kecamatan -->
             <div class="form-group">
               <label class="form-label" for="kecamatan">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                  <polyline points="2 17 12 22 22 17"/>
-                  <polyline points="2 12 12 17 22 12"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
                 </svg>
                 Kecamatan
               </label>
@@ -136,8 +136,8 @@
                   </option>
                 </select>
                 <div class="select-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 9l6 6 6-6"/>
                   </svg>
                 </div>
               </div>
@@ -146,9 +146,9 @@
             <!-- Desa - Input Manual -->
             <div class="form-group">
               <label class="form-label" for="desa">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9,22 9,12 15,12 15,22"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z"/>
+                  <path d="M9 21V12h6v9"/>
                 </svg>
                 Nama Desa/Kelurahan
               </label>
@@ -164,9 +164,8 @@
                   @input="onDesaInput"
                 />
                 <div class="input-icon" v-if="inputDesa">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" @click="clearDesa">
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" @click="clearDesa">
+                    <path d="M18 6L6 18M6 6l12 12"/>
                   </svg>
                 </div>
               </div>
@@ -178,9 +177,9 @@
                   :key="desa.id"
                   @click="selectDesaSuggestion(desa)"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <circle cx="12" cy="10" r="3"/>
+                    <path d="M12 21c-4 0-7-5-7-11a7 7 0 0 1 14 0c0 6-3 11-7 11z"/>
                   </svg>
                   {{ desa.nama }}
                 </div>
@@ -192,14 +191,13 @@
               :disabled="!canSearch"
               @click="searchDesa"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="M21 21l-4.35-4.35"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="btn-icon">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="M21 21l-4-4"/>
               </svg>
               <span>Lihat Data Desa</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="btn-arrow">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </button>
           </div>
@@ -219,21 +217,21 @@
         <!-- Trust Badges -->
         <div class="trust-badges">
           <div class="badge-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               <polyline points="9 12 11 14 15 10"/>
             </svg>
             <span>Data Terverifikasi</span>
           </div>
           <div class="badge-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
             </svg>
             <span>Privasi Terjamin</span>
           </div>
           <div class="badge-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="12" cy="12" r="10"/>
               <polyline points="12 6 12 12 16 14"/>
             </svg>

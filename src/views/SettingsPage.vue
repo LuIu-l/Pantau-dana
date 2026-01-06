@@ -11,11 +11,11 @@ const activeTab = ref('profil')
 
 // Tabs
 const tabs = [
-  { id: 'profil', label: 'Profil', icon: '👤' },
-  { id: 'notifikasi', label: 'Notifikasi', icon: '🔔' },
-  { id: 'privasi', label: 'Privasi', icon: '🔒' },
-  { id: 'favorit', label: 'Favorit', icon: '⭐' },
-  { id: 'data', label: 'Data Saya', icon: '📦' }
+  { id: 'profil', label: 'Profil', icon: '◯' },
+  { id: 'notifikasi', label: 'Notifikasi', icon: '◎' },
+  { id: 'privasi', label: 'Privasi', icon: '◈' },
+  { id: 'favorit', label: 'Favorit', icon: '☆' },
+  { id: 'data', label: 'Data Saya', icon: '▤' }
 ]
 
 // Profile form
@@ -277,14 +277,14 @@ const deleteAccount = () => {
                   class="favorite-item"
                 >
                   <div class="favorite-icon">
-                    {{ fav.type === 'desa' ? '🏘️' : '🏗️' }}
+                    {{ fav.type === 'desa' ? '◇' : '□' }}
                   </div>
                   <div class="favorite-info">
                     <h4>{{ fav.name }}</h4>
                     <p>{{ fav.location }}</p>
                   </div>
                   <button class="btn btn-ghost btn-sm" @click="removeFavorite(fav.id)">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <polyline points="3 6 5 6 21 6"/>
                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                     </svg>
@@ -292,7 +292,7 @@ const deleteAccount = () => {
                 </div>
                 
                 <div v-if="favorites.length === 0" class="empty-state">
-                  <span class="empty-icon">⭐</span>
+                  <span class="empty-icon">☆</span>
                   <p>Belum ada favorit</p>
                 </div>
               </div>
@@ -309,7 +309,7 @@ const deleteAccount = () => {
             <div class="panel-body">
               <div class="data-actions">
                 <div class="data-card">
-                  <div class="data-icon">📥</div>
+                  <div class="data-icon">↓</div>
                   <div class="data-info">
                     <h4>Ekspor Data</h4>
                     <p>Unduh semua data Anda dalam format JSON</p>
@@ -320,7 +320,7 @@ const deleteAccount = () => {
                 </div>
                 
                 <div class="data-card">
-                  <div class="data-icon">🗑️</div>
+                  <div class="data-icon">□</div>
                   <div class="data-info">
                     <h4>Hapus Riwayat</h4>
                     <p>Hapus riwayat pencarian Anda</p>
@@ -331,7 +331,7 @@ const deleteAccount = () => {
                 </div>
                 
                 <div class="data-card data-card--danger">
-                  <div class="data-icon">⚠️</div>
+                  <div class="data-icon">△</div>
                   <div class="data-info">
                     <h4>Hapus Akun</h4>
                     <p>Hapus akun dan semua data secara permanen</p>

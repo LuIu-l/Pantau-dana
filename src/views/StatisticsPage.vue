@@ -15,17 +15,17 @@ const comparisonProvinsi = ref(null)
 const isSidebarOpen = ref(false)
 
 const metrics = [
-  { id: 'all', label: 'Semua', icon: '📊' },
-  { id: 'dana', label: 'Dana Desa', icon: '💰' },
-  { id: 'proyek', label: 'Proyek', icon: '🏗️' },
-  { id: 'transparansi', label: 'Transparansi', icon: '📈' }
+  { id: 'all', label: 'Semua', icon: '◉' },
+  { id: 'dana', label: 'Dana Desa', icon: '○' },
+  { id: 'proyek', label: 'Proyek', icon: '□' },
+  { id: 'transparansi', label: 'Transparansi', icon: '△' }
 ]
 
 // Infographic data
 const infographics = [
   {
     id: 1,
-    icon: '🛣️',
+    icon: '─',
     value: '156.432',
     unit: 'km',
     label: 'Jalan Desa Dibangun',
@@ -33,7 +33,7 @@ const infographics = [
   },
   {
     id: 2,
-    icon: '🏫',
+    icon: '▢',
     value: '12.543',
     unit: 'unit',
     label: 'Sekolah & PAUD',
@@ -41,7 +41,7 @@ const infographics = [
   },
   {
     id: 3,
-    icon: '💧',
+    icon: '◇',
     value: '45.678',
     unit: 'unit',
     label: 'Sarana Air Bersih',
@@ -49,7 +49,7 @@ const infographics = [
   },
   {
     id: 4,
-    icon: '🏥',
+    icon: '＋',
     value: '8.765',
     unit: 'unit',
     label: 'Posyandu & Puskesmas',
@@ -73,7 +73,7 @@ const toggleSidebar = () => {
       <div class="container">
         <div class="header-content">
           <h1 class="page-title">
-            <span class="title-icon">📊</span>
+            <span class="title-icon">◎</span>
             Statistik Nasional
           </h1>
           <p class="page-subtitle">Dashboard data dana desa dan pembangunan seluruh Indonesia</p>
@@ -81,7 +81,7 @@ const toggleSidebar = () => {
         
         <!-- Mobile Filter Toggle -->
         <button class="filter-toggle-btn" @click="toggleSidebar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <line x1="4" y1="21" x2="4" y2="14"/>
             <line x1="4" y1="10" x2="4" y2="3"/>
             <line x1="12" y1="21" x2="12" y2="12"/>
@@ -105,7 +105,7 @@ const toggleSidebar = () => {
           <div class="sidebar-header">
             <h2>Filter Data</h2>
             <button class="close-sidebar" @click="isSidebarOpen = false">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M18 6L6 18M6 6l12 12"/>
               </svg>
             </button>
@@ -139,7 +139,7 @@ const toggleSidebar = () => {
 
           <div class="sidebar-actions">
             <button class="btn btn-primary" @click="downloadReport('pdf')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
@@ -164,12 +164,12 @@ const toggleSidebar = () => {
           <section class="summary-section">
             <div class="summary-grid">
               <div class="summary-card">
-                <div class="card-icon icon-blue">💰</div>
+                <div class="card-icon icon-blue">○</div>
                 <div class="card-info">
                   <span class="card-label">Total Dana Desa</span>
                   <span class="card-value">{{ formatRupiah(statistikNasional.totalDana) }}</span>
                   <span class="card-trend positive">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
                     </svg>
                     +12.5% dari 2023
@@ -178,12 +178,12 @@ const toggleSidebar = () => {
               </div>
               
               <div class="summary-card">
-                <div class="card-icon icon-green">🏗️</div>
+                <div class="card-icon icon-green">□</div>
                 <div class="card-info">
                   <span class="card-label">Proyek Selesai</span>
                   <span class="card-value">{{ statistikNasional.totalProyek.toLocaleString('id-ID') }}</span>
                   <span class="card-trend positive">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
                     </svg>
                     +8.2% dari 2023
@@ -192,12 +192,12 @@ const toggleSidebar = () => {
               </div>
               
               <div class="summary-card">
-                <div class="card-icon icon-purple">📈</div>
+                <div class="card-icon icon-purple">△</div>
                 <div class="card-info">
                   <span class="card-label">Rata-rata Penyerapan</span>
                   <span class="card-value">{{ statistikNasional.rataRataPenyerapan }}%</span>
                   <span class="card-trend neutral">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <line x1="5" y1="12" x2="19" y2="12"/>
                     </svg>
                     Stabil
@@ -206,12 +206,12 @@ const toggleSidebar = () => {
               </div>
 
               <div class="summary-card">
-                <div class="card-icon icon-orange">🏘️</div>
+                <div class="card-icon icon-orange">◇</div>
                 <div class="card-info">
                   <span class="card-label">Total Desa</span>
                   <span class="card-value">{{ statistikNasional.totalDesa?.toLocaleString('id-ID') || '74.961' }}</span>
                   <span class="card-trend positive">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
                     </svg>
                     Aktif menerima dana
@@ -226,7 +226,7 @@ const toggleSidebar = () => {
             <!-- Trend Chart - Full Width -->
             <div class="chart-card chart-full">
               <div class="chart-header">
-                <h3>📈 Tren Penyerapan Dana Desa (5 Tahun Terakhir)</h3>
+                <h3>↗ Tren Penyerapan Dana Desa (5 Tahun Terakhir)</h3>
               </div>
               <div class="chart-body">
                 <div class="simple-chart trend-chart">
@@ -256,7 +256,7 @@ const toggleSidebar = () => {
               <!-- Distribution Chart -->
               <div class="chart-card">
                 <div class="chart-header">
-                  <h3>💰 Alokasi Penggunaan Dana</h3>
+                  <h3>◐ Alokasi Penggunaan Dana</h3>
                 </div>
                 <div class="chart-body">
                   <div class="distribution-list">
@@ -284,7 +284,7 @@ const toggleSidebar = () => {
               <!-- Project Status Chart -->
               <div class="chart-card">
                 <div class="chart-header">
-                  <h3>🏗️ Status Proyek</h3>
+                  <h3>▣ Status Proyek</h3>
                 </div>
                 <div class="chart-body">
                   <div class="status-grid">
@@ -308,7 +308,7 @@ const toggleSidebar = () => {
             <!-- Top Villages Chart - Full Width -->
             <div class="chart-card chart-full">
               <div class="chart-header">
-                <h3>🏆 Top 10 Desa Penyerapan Terbaik</h3>
+                <h3>★ Top 10 Desa Penyerapan Terbaik</h3>
               </div>
               <div class="chart-body">
                 <div class="top-villages-list">
@@ -337,7 +337,7 @@ const toggleSidebar = () => {
 
           <!-- Infographics Section -->
           <section class="infographics-section">
-            <h2 class="section-title">🌟 Dampak Nyata Dana Desa</h2>
+            <h2 class="section-title">✦ Dampak Nyata Dana Desa</h2>
             <div class="infographics-grid">
               <div 
                 v-for="item in infographics" 

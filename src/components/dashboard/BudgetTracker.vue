@@ -3,7 +3,7 @@
     <div class="card budget-tracker-card">
       <div class="card-header">
         <h2 class="card-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="title-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="title-icon">
             <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
             <path d="M22 12A10 10 0 0 0 12 2v10z"/>
           </svg>
@@ -55,7 +55,7 @@
               <span class="legend-value">{{ formatRupiah(kategori.nilai) }}</span>
             </div>
             <span class="legend-percentage">{{ kategori.persentase }}%</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="legend-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="legend-arrow">
               <path d="M9 18l6-6-6-6"/>
             </svg>
           </div>
@@ -71,7 +71,7 @@
               Proyek {{ selectedCategory }}
             </h3>
             <button class="btn btn-ghost btn-sm" @click="selectedCategory = null">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="6" x2="6" y2="18"/>
                 <line x1="6" y1="6" x2="18" y2="18"/>
               </svg>
@@ -123,7 +123,7 @@
             </div>
 
             <div v-if="filteredProjects.length === 0" class="no-projects">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <circle cx="12" cy="12" r="10"/>
                 <line x1="12" y1="8" x2="12" y2="12"/>
                 <line x1="12" y1="16" x2="12.01" y2="16"/>

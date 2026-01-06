@@ -16,12 +16,12 @@ const emit = defineEmits(['selectDesa'])
     <div class="container">
       <div class="section-header">
         <div>
-          <h2 class="section-title">🏆 Desa dengan Transparansi Terbaik</h2>
+          <h2 class="section-title">★ Desa dengan Transparansi Terbaik</h2>
           <p class="section-subtitle">Top 5 desa dengan skor transparansi tertinggi bulan ini</p>
         </div>
         <router-link to="/statistik" class="btn btn-outline btn-sm">
           Lihat Ranking Lengkap
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </router-link>

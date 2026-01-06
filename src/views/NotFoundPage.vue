@@ -18,9 +18,9 @@ const goBack = () => {
       <div class="not-found-content">
         <div class="error-illustration">
           <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
-            <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="2" opacity="0.2"/>
-            <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="2" opacity="0.3"/>
-            <circle cx="100" cy="100" r="40" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+            <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+            <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="100" cy="100" r="40" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
             <text x="100" y="115" text-anchor="middle" font-size="48" font-weight="bold" fill="currentColor">404</text>
           </svg>
         </div>
@@ -30,14 +30,14 @@ const goBack = () => {
         
         <div class="actions">
           <button class="btn btn-primary btn-lg" @click="goHome">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
             Kembali ke Beranda
           </button>
           <button class="btn btn-outline btn-lg" @click="goBack">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>
             Halaman Sebelumnya

@@ -6,9 +6,9 @@ const activeArticle = ref(null)
 const searchQuery = ref('')
 
 const tabs = [
-  { id: 'articles', label: 'Artikel', icon: '📚' },
-  { id: 'guides', label: 'Panduan', icon: '📖' },
-  { id: 'infographics', label: 'Infografis', icon: '📊' }
+  { id: 'articles', label: 'Artikel', icon: '▤' },
+  { id: 'guides', label: 'Panduan', icon: '▥' },
+  { id: 'infographics', label: 'Infografis', icon: '◉' }
 ]
 
 const articles = [
@@ -18,7 +18,7 @@ const articles = [
     summary: 'Dana Desa adalah dana yang bersumber dari Anggaran Pendapatan dan Belanja Negara yang diperuntukkan bagi Desa.',
     content: 'Dana Desa diprioritaskan untuk pembiayaan pelaksanaan program dan kegiatan berskala lokal desa dengan tujuan untuk meningkatkan kesejahteraan masyarakat desa dan kualitas hidup masyarakat serta penanggulangan kemiskinan. Prioritas penggunaan Dana Desa dipublikasikan kepada masyarakat oleh Pemerintah Desa di ruang publik yang dapat diakses masyarakat desa.\n\nPenggunaan Dana Desa meliputi:\n• Pembangunan infrastruktur desa\n• Pemberdayaan masyarakat\n• Pembinaan kemasyarakatan\n• Penanggulangan bencana\n• BLT Dana Desa',
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1000',
-    icon: '💰',
+    icon: '○',
     category: 'Dana Desa',
     readTime: '5 menit',
     color: '#3B82F6'
@@ -29,7 +29,7 @@ const articles = [
     summary: 'Mengenal berbagai jenis bantuan sosial yang disalurkan pemerintah untuk masyarakat.',
     content: 'Pemerintah menyalurkan berbagai jenis bantuan sosial (Bansos) untuk membantu masyarakat yang membutuhkan:\n\n1. Program Keluarga Harapan (PKH)\nBantuan tunai bersyarat untuk keluarga miskin dengan komponen kesehatan dan pendidikan.\n\n2. Bantuan Pangan Non Tunai (BPNT)\nBantuan sembako melalui Kartu Sembako untuk keluarga kurang mampu.\n\n3. Bantuan Sosial Tunai (BST)\nBantuan langsung tunai untuk masyarakat terdampak ekonomi.\n\n4. Program Indonesia Pintar (PIP)\nBantuan pendidikan untuk siswa dari keluarga miskin.',
     image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1000',
-    icon: '🤝',
+    icon: '◇',
     category: 'Bansos',
     readTime: '7 menit',
     color: '#10B981'
@@ -40,7 +40,7 @@ const articles = [
     summary: 'Panduan bagi masyarakat untuk melaporkan dugaan penyelewengan dana desa atau bansos.',
     content: 'Masyarakat memiliki hak untuk mengawasi penggunaan dana desa dan penyaluran bansos. Berikut langkah melaporkan penyelewengan:\n\n1. Kumpulkan Bukti\n• Foto atau video dokumentasi\n• Saksi yang dapat dikonfirmasi\n• Data pembanding (harga pasar, spesifikasi)\n\n2. Pilih Saluran Pelaporan\n• Aplikasi LAPOR! (lapor.go.id)\n• Inspektorat daerah setempat\n• Platform Pantau Desa\n• BPK atau BPKP\n\n3. Isi Laporan dengan Lengkap\n• Kronologi kejadian\n• Lokasi dan waktu\n• Pihak terlibat\n• Estimasi kerugian\n\n4. Pantau Tindak Lanjut\nSimpan nomor tiket laporan untuk tracking.',
     image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1000',
-    icon: '📢',
+    icon: '△',
     category: 'Pelaporan',
     readTime: '8 menit',
     color: '#8B5CF6'
@@ -51,7 +51,7 @@ const articles = [
     summary: 'Masyarakat memiliki hak penuh untuk mengawasi dana desa dan bantuan sosial.',
     content: 'Berdasarkan Undang-Undang Desa No. 6 Tahun 2014, masyarakat desa memiliki hak:\n\n1. Hak Informasi\n• Mengakses data APBDes\n• Mengetahui rencana pembangunan\n• Melihat laporan realisasi anggaran\n\n2. Hak Partisipasi\n• Hadir dalam Musdes\n• Mengusulkan program pembangunan\n• Memberikan masukan perencanaan\n\n3. Hak Pengawasan\n• Memantau pelaksanaan proyek\n• Mengecek kualitas pekerjaan\n• Melaporkan penyimpangan\n\n4. Hak Keberatan\n• Mengajukan keberatan atas keputusan\n• Meminta klarifikasi penggunaan dana\n• Menuntut pertanggungjawaban',
     image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000',
-    icon: '⚖️',
+    icon: '□',
     category: 'Hukum',
     readTime: '6 menit',
     color: '#F59E0B'
@@ -62,7 +62,7 @@ const articles = [
     summary: 'Anggaran Pendapatan dan Belanja Desa adalah rencana keuangan tahunan desa.',
     content: 'APBDes adalah instrumen penting dalam pengelolaan keuangan desa yang terdiri dari:\n\n1. Pendapatan Desa\n• Dana Desa dari APBN\n• Alokasi Dana Desa (ADD)\n• Bagi hasil pajak daerah\n• Pendapatan Asli Desa\n\n2. Belanja Desa\n• Bidang Penyelenggaraan Pemerintahan\n• Bidang Pembangunan\n• Bidang Pembinaan Kemasyarakatan\n• Bidang Pemberdayaan Masyarakat\n\n3. Pembiayaan\n• Penerimaan pembiayaan\n• Pengeluaran pembiayaan\n• SiLPA tahun sebelumnya\n\nAPBDes harus dipublikasikan agar masyarakat dapat mengawasi penggunaannya.',
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000',
-    icon: '📋',
+    icon: '▢',
     category: 'Dana Desa',
     readTime: '6 menit',
     color: '#EC4899'
@@ -73,7 +73,7 @@ const articles = [
     summary: 'Panduan lengkap cara mengecek apakah Anda terdaftar sebagai penerima bantuan sosial.',
     content: 'Berikut cara mengecek status penerima bantuan sosial:\n\n1. Melalui Website Resmi\n• cekbansos.kemensos.go.id\n• dtks.kemensos.go.id\n\n2. Data yang Dibutuhkan\n• NIK (Nomor Induk Kependudukan)\n• Nama lengkap sesuai KTP\n• Alamat domisili\n\n3. Jenis Bantuan yang Bisa Dicek\n• PKH (Program Keluarga Harapan)\n• BPNT/Kartu Sembako\n• BST (Bantuan Sosial Tunai)\n• BLT Dana Desa\n\n4. Jika Data Tidak Sesuai\n• Laporkan ke kantor desa\n• Ajukan ke Dinas Sosial\n• Gunakan fitur laporan di Pantau Desa\n\nPastikan data Anda sudah terupdate di DTKS untuk mendapat bantuan.',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1000',
-    icon: '🔍',
+    icon: '◎',
     category: 'Bansos',
     readTime: '5 menit',
     color: '#06B6D4'
@@ -85,21 +85,21 @@ const guides = [
     id: 1,
     title: 'Panduan Menggunakan Pantau Desa',
     steps: ['Buka aplikasi dan pilih provinsi', 'Telusuri kabupaten dan kecamatan', 'Pilih desa untuk melihat detail', 'Lihat data anggaran dan proyek'],
-    icon: '🗺️',
+    icon: '◎',
     color: '#3B82F6'
   },
   {
     id: 2,
     title: 'Cara Membuat Laporan',
     steps: ['Klik tombol "Buat Laporan"', 'Pilih jenis pelanggaran', 'Isi detail kronologi', 'Upload bukti pendukung', 'Submit dan simpan kode tiket'],
-    icon: '📝',
+    icon: '▤',
     color: '#10B981'
   },
   {
     id: 3,
     title: 'Cara Melacak Laporan',
     steps: ['Buka menu "Lacak Laporan"', 'Masukkan kode tiket', 'Lihat status terkini', 'Cek riwayat tindak lanjut'],
-    icon: '🔎',
+    icon: '○',
     color: '#8B5CF6'
   }
 ]
@@ -130,25 +130,25 @@ const tips = [
     number: '01',
     title: 'Selalu Verifikasi',
     description: 'Pastikan informasi yang Anda terima berasal dari sumber resmi pemerintah.',
-    icon: '✅'
+    icon: '✓'
   },
   {
     number: '02',
     title: 'Simpan Bukti',
     description: 'Dokumentasikan setiap bukti jika menemukan indikasi penyelewengan.',
-    icon: '📸'
+    icon: '◎'
   },
   {
     number: '03',
     title: 'Gunakan Jalur Resmi',
     description: 'Laporkan melalui aplikasi LAPOR! atau instansi berwenang untuk tindak lanjut.',
-    icon: '📨'
+    icon: '▷'
   },
   {
     number: '04',
     title: 'Ikuti Perkembangan',
     description: 'Pantau terus status laporan Anda hingga mendapat penyelesaian.',
-    icon: '👁️'
+    icon: '◉'
   }
 ]
 
@@ -182,9 +182,9 @@ const closeArticle = () => {
       <div class="container">
         <div class="hero-content">
           <span class="hero-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H4V4z"/>
+              <path d="M20 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7V4z"/>
             </svg>
             Pusat Edukasi
           </span>
@@ -193,9 +193,9 @@ const closeArticle = () => {
           
           <!-- Search -->
           <div class="hero-search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="M21 21l-4.35-4.35"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="7"/>
+              <path d="M21 21l-4-4"/>
             </svg>
             <input 
               v-model="searchQuery" 
@@ -211,28 +211,28 @@ const closeArticle = () => {
       <!-- Stats Bar -->
       <div class="stats-bar">
         <div class="stat-item">
-          <span class="stat-icon">📚</span>
+          <span class="stat-icon">▤</span>
           <div class="stat-info">
             <span class="stat-value">{{ articles.length }}</span>
             <span class="stat-label">Artikel</span>
           </div>
         </div>
         <div class="stat-item">
-          <span class="stat-icon">📖</span>
+          <span class="stat-icon">▥</span>
           <div class="stat-info">
             <span class="stat-value">{{ guides.length }}</span>
             <span class="stat-label">Panduan</span>
           </div>
         </div>
         <div class="stat-item">
-          <span class="stat-icon">📊</span>
+          <span class="stat-icon">◉</span>
           <div class="stat-info">
             <span class="stat-value">{{ infographics.length }}</span>
             <span class="stat-label">Infografis</span>
           </div>
         </div>
         <div class="stat-item">
-          <span class="stat-icon">💡</span>
+          <span class="stat-icon">○</span>
           <div class="stat-info">
             <span class="stat-value">{{ tips.length }}</span>
             <span class="stat-label">Tips</span>
@@ -286,7 +286,7 @@ const closeArticle = () => {
         </div>
 
         <div v-if="filteredArticles.length === 0" class="no-results">
-          <span class="no-results-icon">🔍</span>
+          <span class="no-results-icon">◎</span>
           <p>Tidak ada artikel yang cocok dengan "{{ searchQuery }}"</p>
           <button class="btn-reset" @click="searchQuery = ''">Reset Pencarian</button>
         </div>
@@ -329,7 +329,7 @@ const closeArticle = () => {
             <div class="infographic-image">
               <img :src="info.image" :alt="info.title" loading="lazy" />
               <div class="infographic-overlay">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <circle cx="11" cy="11" r="8"/>
                   <path d="M21 21l-4.35-4.35"/>
                   <path d="M11 8v6M8 11h6"/>
@@ -347,7 +347,7 @@ const closeArticle = () => {
       <!-- Tips Section -->
       <section class="tips-section">
         <div class="section-header">
-          <h2>💡 Tips Penting untuk Warga</h2>
+          <h2>○ Tips Penting untuk Warga</h2>
           <p>Panduan singkat agar pengawasan Anda efektif</p>
         </div>
         <div class="tips-grid">
@@ -367,19 +367,19 @@ const closeArticle = () => {
       <!-- CTA Section -->
       <section class="cta-section">
         <div class="cta-content">
-          <div class="cta-icon">🚀</div>
+          <div class="cta-icon">▷</div>
           <h2>Siap Mengawasi Dana Desa?</h2>
           <p>Mulai pantau penggunaan dana desa di wilayah Anda sekarang</p>
           <div class="cta-buttons">
             <router-link to="/jelajahi" class="btn btn-primary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="M21 21l-4.35-4.35"/>
               </svg>
               Jelajahi Desa
             </router-link>
             <router-link to="/laporan" class="btn btn-outline">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
                 <line x1="12" y1="18" x2="12" y2="12"/>
@@ -398,7 +398,7 @@ const closeArticle = () => {
         <div v-if="activeArticle" class="modal-overlay" @click="closeArticle">
           <div class="modal-content" @click.stop>
             <button class="close-btn" @click="closeArticle">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M18 6L6 18M6 6l12 12"/>
               </svg>
             </button>
@@ -412,7 +412,7 @@ const closeArticle = () => {
                 <span class="modal-category" :style="{ background: activeArticle.color }">
                   {{ activeArticle.icon }} {{ activeArticle.category }}
                 </span>
-                <span class="modal-time">⏱️ {{ activeArticle.readTime }} baca</span>
+                <span class="modal-time">◔ {{ activeArticle.readTime }} baca</span>
               </div>
               
               <h2>{{ activeArticle.title }}</h2>

@@ -6,7 +6,7 @@ const quickCards = [
     id: 'search',
     title: 'Cari Desa',
     description: 'Temukan informasi desa di seluruh Indonesia',
-    icon: '🔍',
+    icon: '◎',
     color: 'primary',
     path: '/'
   },
@@ -14,7 +14,7 @@ const quickCards = [
     id: 'bansos',
     title: 'Cek Bansos',
     description: 'Verifikasi status penerima bantuan sosial',
-    icon: '💰',
+    icon: '○',
     color: 'secondary',
     path: '/bansos'
   },
@@ -22,7 +22,7 @@ const quickCards = [
     id: 'report',
     title: 'Buat Laporan',
     description: 'Laporkan masalah dengan aman & anonim',
-    icon: '📝',
+    icon: '▤',
     color: 'warning',
     action: 'openReport'
   },
@@ -30,7 +30,7 @@ const quickCards = [
     id: 'ranking',
     title: 'Lihat Ranking',
     description: 'Peringkat transparansi desa se-Indonesia',
-    icon: '📊',
+    icon: '◉',
     color: 'accent',
     path: '/statistik'
   }
@@ -61,7 +61,7 @@ const handleClick = (card) => {
             <h3 class="card-title">{{ card.title }}</h3>
             <p class="card-description">{{ card.description }}</p>
           </div>
-          <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </button>

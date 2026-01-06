@@ -6,7 +6,7 @@
     :class="{ 'fab-hidden': isModalOpen }"
     aria-label="Lapor Masalah"
   >
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
     </svg>
     <span class="fab-text">Lapor Masalah</span>
@@ -18,15 +18,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
             </svg>
             Lapor Masalah
           </h2>
           <button class="modal-close" @click="closeModal" aria-label="Tutup">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18"/>
-              <line x1="6" y1="6" x2="18" y2="18"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
           </button>
         </div>
@@ -43,8 +42,8 @@
             }"
           >
             <div class="step-number">
-              <svg v-if="currentStep > index" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"/>
+              <svg v-if="currentStep > index" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M20 6L9 17l-5-5"/>
               </svg>
               <span v-else>{{ index + 1 }}</span>
             </div>
@@ -72,12 +71,12 @@
                   class="sr-only"
                 />
                 <div class="category-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path v-if="kategori.id === 'proyek_fiktif'" d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                    <path v-else-if="kategori.id === 'kualitas_buruk'" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path v-if="kategori.id === 'proyek_fiktif'" d="M12 4L3 18h18L12 4z"/>
+                    <path v-else-if="kategori.id === 'kualitas_buruk'" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8L14 2z"/>
                     <path v-else-if="kategori.id === 'pungli'" d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    <path v-else-if="kategori.id === 'penyimpangan'" d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                    <circle v-else cx="12" cy="12" r="10"/>
+                    <path v-else-if="kategori.id === 'penyimpangan'" d="M12 2l8 4v6c0 5.5-3.8 10.7-8 12-4.2-1.3-8-6.5-8-12V6l8-4z"/>
+                    <circle v-else cx="12" cy="12" r="9"/>
                   </svg>
                 </div>
                 <span class="category-name">{{ kategori.nama }}</span>
@@ -128,10 +127,10 @@
                   class="sr-only"
                 />
                 <label for="foto" class="file-upload-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="17 8 12 3 7 8"/>
-                    <line x1="12" y1="3" x2="12" y2="15"/>
+                    <path d="M17 8l-5-5-5 5"/>
+                    <path d="M12 3v12"/>
                   </svg>
                   <span>Klik untuk upload foto</span>
                   <span class="file-hint">JPG, PNG (Maks. 5MB per file)</span>
@@ -146,9 +145,8 @@
                 >
                   <span class="file-name">{{ file.name }}</span>
                   <button type="button" class="file-remove" @click="removeFile(index)">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <line x1="18" y1="6" x2="6" y2="18"/>
-                      <line x1="6" y1="6" x2="18" y2="18"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M18 6L6 18M6 6l12 12"/>
                     </svg>
                   </button>
                 </div>
@@ -180,8 +178,8 @@
             </div>
 
             <div class="anonymity-notice">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s7-4 7-9V6l-7-3-7 3v7c0 5 7 9 7 9z"/>
               </svg>
               <div>
                 <h4>Jaminan Keamanan Pelapor</h4>
@@ -204,7 +202,7 @@
           <!-- Success State -->
           <div v-show="isSubmitted" class="success-state">
             <div class="success-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
@@ -216,7 +214,7 @@
               <span class="ticket-label">Kode Tiket Laporan Anda</span>
               <span class="ticket-code">{{ ticketCode }}</span>
               <button type="button" class="btn btn-outline btn-sm" @click="copyTicketCode">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
                 </svg>
@@ -238,7 +236,7 @@
               class="btn btn-ghost"
               @click="prevStep"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M19 12H5M12 19l-7-7 7-7"/>
               </svg>
               Kembali
@@ -252,7 +250,7 @@
               :disabled="!canProceed"
             >
               Lanjutkan
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </button>
@@ -264,7 +262,7 @@
               :disabled="!formData.agreement || isSubmitting"
             >
               <span v-if="isSubmitting" class="spinner"></span>
-              <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
               </svg>
               {{ isSubmitting ? 'Mengirim...' : 'Kirim Laporan' }}

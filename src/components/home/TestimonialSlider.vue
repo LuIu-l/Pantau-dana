@@ -100,12 +100,12 @@ const renderStars = (rating) => {
         
         <!-- Navigation Arrows -->
         <button class="slider-arrow slider-arrow--prev" @click="prevSlide" aria-label="Previous testimonial">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M15 18l-6-6 6-6"/>
           </svg>
         </button>
         <button class="slider-arrow slider-arrow--next" @click="nextSlide" aria-label="Next testimonial">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M9 18l6-6-6-6"/>
           </svg>
         </button>

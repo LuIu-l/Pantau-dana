@@ -91,14 +91,14 @@ const getScoreIcon = (score) => {
 }
 
 const getRegionIcon = (nama) => {
-  if (nama.includes('Jawa')) return '🏛️'
-  if (nama.includes('Sumatera') || nama.includes('Riau') || nama.includes('Jambi') || nama.includes('Aceh') || nama.includes('Lampung') || nama.includes('Bengkulu') || nama.includes('Bangka')) return '🌴'
-  if (nama.includes('Kalimantan')) return '🌲'
-  if (nama.includes('Sulawesi') || nama.includes('Gorontalo')) return '🏝️'
-  if (nama.includes('Bali') || nama.includes('Nusa')) return '🏖️'
-  if (nama.includes('Papua')) return '🌿'
-  if (nama.includes('Maluku')) return '🐚'
-  return '🏘️'
+  if (nama.includes('Jawa')) return '▢'
+  if (nama.includes('Sumatera') || nama.includes('Riau') || nama.includes('Jambi') || nama.includes('Aceh') || nama.includes('Lampung') || nama.includes('Bengkulu') || nama.includes('Bangka')) return '△'
+  if (nama.includes('Kalimantan')) return '▷'
+  if (nama.includes('Sulawesi') || nama.includes('Gorontalo')) return '○'
+  if (nama.includes('Bali') || nama.includes('Nusa')) return '◇'
+  if (nama.includes('Papua')) return '□'
+  if (nama.includes('Maluku')) return '◎'
+  return '◈'
 }
 </script>
 
@@ -109,7 +109,7 @@ const getRegionIcon = (nama) => {
       <div class="container">
         <div class="header-content">
           <h1 class="page-title">
-            <span class="title-icon">🗺️</span>
+            <span class="title-icon">◎</span>
             Jelajahi Provinsi Indonesia
           </h1>
           <p class="page-subtitle">Telusuri data transparansi dan dana desa dari {{ totalStats.totalProvinsi }} provinsi di Indonesia</p>
@@ -146,7 +146,7 @@ const getRegionIcon = (nama) => {
         <div class="controls-wrapper">
           <!-- Search -->
           <div class="search-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="11" cy="11" r="8"/>
               <path d="M21 21l-4.35-4.35"/>
             </svg>
@@ -157,7 +157,7 @@ const getRegionIcon = (nama) => {
               class="search-input"
             />
             <button v-if="searchQuery" class="clear-btn" @click="searchQuery = ''">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M18 6L6 18M6 6l12 12"/>
               </svg>
             </button>
@@ -214,14 +214,14 @@ const getRegionIcon = (nama) => {
               <h3 class="province-name">{{ provinsi.nama }}</h3>
               <div class="province-stats">
                 <div class="mini-stat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                     <polyline points="9 22 9 12 15 12 15 22"/>
                   </svg>
                   <span>{{ provinsi.totalDesa.toLocaleString('id-ID') }} desa</span>
                 </div>
                 <div class="mini-stat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <line x1="12" y1="1" x2="12" y2="23"/>
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                   </svg>
@@ -232,7 +232,7 @@ const getRegionIcon = (nama) => {
 
             <div class="card-footer">
               <span class="view-detail">Lihat Detail</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </div>
@@ -241,7 +241,7 @@ const getRegionIcon = (nama) => {
 
         <!-- Empty State -->
         <div v-if="filteredAndSortedProvinsi.length === 0" class="empty-state">
-          <span class="empty-icon">🔍</span>
+          <span class="empty-icon">◎</span>
           <h3>Tidak Ada Hasil</h3>
           <p>Tidak ditemukan provinsi dengan kata kunci "{{ searchQuery }}"</p>
           <button class="btn btn-primary" @click="searchQuery = ''">Reset Pencarian</button>
@@ -258,7 +258,7 @@ const getRegionIcon = (nama) => {
             <h3>{{ selectedProvinsiData.nama }}</h3>
           </div>
           <button class="close-btn" @click="closeInfoPanel">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
           </button>
@@ -284,37 +284,37 @@ const getRegionIcon = (nama) => {
               ></div>
             </div>
             <p class="score-desc">
-              <span v-if="selectedProvinsiData.skorTransparansi >= 80">✅ Transparansi Sangat Baik</span>
-              <span v-else-if="selectedProvinsiData.skorTransparansi >= 60">⚠️ Transparansi Cukup Baik</span>
-              <span v-else>❌ Perlu Peningkatan</span>
+              <span v-if="selectedProvinsiData.skorTransparansi >= 80">✓ Transparansi Sangat Baik</span>
+              <span v-else-if="selectedProvinsiData.skorTransparansi >= 60">△ Transparansi Cukup Baik</span>
+              <span v-else>✗ Perlu Peningkatan</span>
             </p>
           </div>
 
           <!-- Stats Grid -->
           <div class="detail-stats">
             <div class="detail-stat">
-              <div class="detail-stat-icon">🏘️</div>
+              <div class="detail-stat-icon">◇</div>
               <div class="detail-stat-info">
                 <span class="detail-stat-value">{{ selectedProvinsiData.totalDesa.toLocaleString('id-ID') }}</span>
                 <span class="detail-stat-label">Total Desa</span>
               </div>
             </div>
             <div class="detail-stat">
-              <div class="detail-stat-icon">💰</div>
+              <div class="detail-stat-icon">○</div>
               <div class="detail-stat-info">
                 <span class="detail-stat-value">{{ formatRupiah(selectedProvinsiData.totalDana) }}</span>
                 <span class="detail-stat-label">Total Dana Desa</span>
               </div>
             </div>
             <div class="detail-stat">
-              <div class="detail-stat-icon">📊</div>
+              <div class="detail-stat-icon">◎</div>
               <div class="detail-stat-info">
                 <span class="detail-stat-value">{{ formatRupiah(Math.round(selectedProvinsiData.totalDana / selectedProvinsiData.totalDesa)) }}</span>
                 <span class="detail-stat-label">Rata-rata Dana/Desa</span>
               </div>
             </div>
             <div class="detail-stat">
-              <div class="detail-stat-icon">🏆</div>
+              <div class="detail-stat-icon">☆</div>
               <div class="detail-stat-info">
                 <span class="detail-stat-value">#{{ provinsiData.sort((a,b) => b.skorTransparansi - a.skorTransparansi).findIndex(p => p.id === selectedProvinsi) + 1 }}</span>
                 <span class="detail-stat-label">Ranking Nasional</span>
@@ -325,7 +325,7 @@ const getRegionIcon = (nama) => {
           <!-- Action Buttons -->
           <div class="panel-actions">
             <button class="btn btn-primary btn-lg btn-block" @click="viewProvinsiDetail">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="18" y1="20" x2="18" y2="10"/>
                 <line x1="12" y1="20" x2="12" y2="4"/>
                 <line x1="6" y1="20" x2="6" y2="14"/>

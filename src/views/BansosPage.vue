@@ -32,9 +32,9 @@ const activeTab = ref('check') // 'check' or 'expenditure'
             :aria-selected="activeTab === 'check'"
           >
             <div class="tab-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="M21 21l-4.35-4.35"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="M21 21l-4-4"/>
               </svg>
             </div>
             <div class="tab-info">
@@ -50,9 +50,9 @@ const activeTab = ref('check') // 'check' or 'expenditure'
             :aria-selected="activeTab === 'expenditure'"
           >
             <div class="tab-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-                <line x1="1" y1="10" x2="23" y2="10"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                <path d="M2 10h20"/>
               </svg>
             </div>
             <div class="tab-info">
@@ -78,21 +78,21 @@ const activeTab = ref('check') // 'check' or 'expenditure'
         <div class="info-grid">
           <div class="info-item">
             <div class="info-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s7-4 7-9V6l-7-3-7 3v7c0 5 7 9 7 9z"/></svg>
             </div>
             <h3>Data Terjamin</h3>
             <p>Data bersumber langsung dari DTKS Kementerian Sosial dan Pemerintah Desa.</p>
           </div>
           <div class="info-item">
             <div class="info-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 3.5 3.5L23 7z"/><path d="M16 5l-4.5 4.5"/><path d="M21 3l-6.5 6.5"/><path d="M3 14v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><line x1="12" y1="21" x2="12" y2="12"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 7l-7 5 3.5 3.5L23 7z"/><path d="M12 21V12"/><path d="M3 14v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6"/></svg>
             </div>
             <h3>Update Berkala</h3>
             <p>Pembaruan data dilakukan setiap bulan sesuai jadwal penyaluran bantuan.</p>
           </div>
           <div class="info-item">
             <div class="info-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
             </div>
             <h3>Lapor Masalah</h3>
             <p>Temukan ketidaksesuaian? Laporkan melalui fitur pengaduan kami.</p>

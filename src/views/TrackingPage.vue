@@ -104,28 +104,28 @@ const formatMonth = (date) => {
             :class="{ active: activeTab === 'dashboard' }"
             @click="activeTab = 'dashboard'"
           >
-            <span>📋</span> Dashboard
+            <span>▤</span> Dashboard
           </button>
           <button 
             class="tab" 
             :class="{ active: activeTab === 'bulk' }"
             @click="activeTab = 'bulk'"
           >
-            <span>📦</span> Bulk Tracking
+            <span>◫</span> Bulk Tracking
           </button>
           <button 
             class="tab" 
             :class="{ active: activeTab === 'calendar' }"
             @click="activeTab = 'calendar'"
           >
-            <span>📅</span> Kalender
+            <span>▦</span> Kalender
           </button>
           <button 
             class="tab" 
             :class="{ active: activeTab === 'timeline' }"
             @click="activeTab = 'timeline'"
           >
-            <span>⏱️</span> Timeline
+            <span>◔</span> Timeline
           </button>
         </div>
       </div>
@@ -157,7 +157,7 @@ const formatMonth = (date) => {
         <!-- Search & Filter -->
         <div class="filter-bar">
           <div class="search-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="11" cy="11" r="8"/>
               <path d="M21 21l-4.35-4.35"/>
             </svg>
@@ -175,7 +175,7 @@ const formatMonth = (date) => {
           </select>
           <div class="export-buttons">
             <button class="btn btn-outline btn-sm" @click="exportReports('pdf')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
@@ -183,7 +183,7 @@ const formatMonth = (date) => {
               PDF
             </button>
             <button class="btn btn-outline btn-sm" @click="exportReports('excel')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
@@ -212,7 +212,7 @@ const formatMonth = (date) => {
             <p class="report-description">{{ report.deskripsi }}</p>
             <div class="report-meta">
               <span class="meta-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                   <line x1="16" y1="2" x2="16" y2="6"/>
                   <line x1="8" y1="2" x2="8" y2="6"/>
@@ -221,7 +221,7 @@ const formatMonth = (date) => {
                 {{ formatTanggal(report.tanggal) }}
               </span>
               <span class="meta-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
@@ -236,7 +236,7 @@ const formatMonth = (date) => {
           </div>
 
           <div v-if="filteredReports.length === 0" class="empty-state">
-            <span class="empty-icon">📭</span>
+            <span class="empty-icon">□</span>
             <h3>Tidak ada laporan</h3>
             <p>Belum ada laporan yang sesuai dengan filter</p>
             <router-link to="/lapor" class="btn btn-primary">
@@ -263,7 +263,7 @@ LPR-2024-345678"
           
           <div class="bulk-actions">
             <button class="btn btn-primary btn-lg" @click="handleBulkTrack">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="M21 21l-4.35-4.35"/>
               </svg>
@@ -278,13 +278,13 @@ LPR-2024-345678"
         <div class="calendar-card">
           <div class="calendar-header">
             <button class="nav-btn" @click="prevMonth">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M15 18l-6-6 6-6"/>
               </svg>
             </button>
             <h3>{{ formatMonth(calendarMonth) }}</h3>
             <button class="nav-btn" @click="nextMonth">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M9 18l6-6-6-6"/>
               </svg>
             </button>
@@ -362,7 +362,7 @@ LPR-2024-345678"
               </div>
               <h4 class="timeline-title">{{ report.kode_tiket }}</h4>
               <p class="timeline-description">{{ report.deskripsi }}</p>
-              <span class="timeline-location">📍 {{ report.lokasi }}</span>
+              <span class="timeline-location">◇ {{ report.lokasi }}</span>
             </div>
           </div>
 
