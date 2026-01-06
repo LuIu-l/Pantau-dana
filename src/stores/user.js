@@ -17,12 +17,6 @@ export const useUserStore = defineStore('user', () => {
     subscribeNewsletter: true,
   })
 
-  const appearance = ref({
-    tema: 'auto', // 'light', 'dark', 'auto'
-    bahasa: 'id', // 'id', 'en', 'jv'
-    ukuranFont: 'normal', // 'kecil', 'normal', 'besar'
-  })
-
   const onboardingCompleted = ref(false)
   const recentSearches = ref([])
 
@@ -44,34 +38,6 @@ export const useUserStore = defineStore('user', () => {
   function updatePrivacy(data) {
     privacy.value = { ...privacy.value, ...data }
     saveToStorage()
-  }
-
-  function updateAppearance(data) {
-    appearance.value = { ...appearance.value, ...data }
-    applyAppearance()
-    saveToStorage()
-  }
-
-  function applyAppearance() {
-    // Apply theme
-    const theme = appearance.value.tema
-    if (theme === 'auto') {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light')
-    } else {
-      document.documentElement.setAttribute('data-theme', theme)
-    }
-
-    // Apply font size
-    const fontSizes = {
-      kecil: '14px',
-      normal: '16px',
-      besar: '18px',
-    }
-    document.documentElement.style.fontSize = fontSizes[appearance.value.ukuranFont]
-
-    // Apply language (could trigger i18n change)
-    document.documentElement.lang = appearance.value.bahasa
   }
 
   function completeOnboarding() {
@@ -132,7 +98,6 @@ export const useUserStore = defineStore('user', () => {
     localStorage.setItem('user-store', JSON.stringify({
       profile: profile.value,
       privacy: privacy.value,
-      appearance: appearance.value,
       recentSearches: recentSearches.value,
       onboardingCompleted: onboardingCompleted.value,
     }))
@@ -144,7 +109,6 @@ export const useUserStore = defineStore('user', () => {
       const data = JSON.parse(saved)
       if (data.profile) profile.value = data.profile
       if (data.privacy) privacy.value = data.privacy
-      if (data.appearance) appearance.value = data.appearance
       if (data.recentSearches) recentSearches.value = data.recentSearches
       if (data.onboardingCompleted) onboardingCompleted.value = data.onboardingCompleted
     }
@@ -152,19 +116,19 @@ export const useUserStore = defineStore('user', () => {
 
   // Initialize
   loadFromStorage()
-  applyAppearance()
+  // Force light theme
+  document.documentElement.removeAttribute('data-theme')
+  localStorage.setItem('theme', 'light')
 
   return {
     profile,
     privacy,
-    appearance,
     onboardingCompleted,
     recentSearches,
     isProfileComplete,
     displayName,
     updateProfile,
     updatePrivacy,
-    updateAppearance,
     completeOnboarding,
     addRecentSearch,
     clearRecentSearches,

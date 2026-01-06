@@ -1,4 +1,5 @@
 /* ===== PANTAU DESA DESIGN SYSTEM v2.0 ===== */
+/* Clean White Theme - Representing Transparency & Trust */
 
 /* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -37,28 +38,28 @@
   --color-danger: #DC2626;
   --color-info: #1D4ED8;
   
-  /* Neutral Colors - Improved contrast */
-  --color-background: #F8FAFC;
+  /* Neutral Colors - Clean White Theme for Transparency */
+  --color-background: #FFFFFF;
   --color-surface: #FFFFFF;
-  --color-surface-elevated: #FFFFFF;
-  --color-border: #CBD5E1;
-  --color-border-light: #E2E8F0;
-  --color-text-primary: #0F172A;
-  --color-text-secondary: #334155;
-  --color-text-muted: #64748B;
+  --color-surface-elevated: #FAFBFC;
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-muted: #6B7280;
   
-  /* Gradient Colors */
+  /* Gradient Colors - Clean & Professional */
   --gradient-primary: linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%);
   --gradient-secondary: linear-gradient(135deg, #059669 0%, #1D4ED8 100%);
-  --gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
-  --gradient-dark: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
-  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(29, 78, 216, 0.15) 0%, transparent 70%);
+  --gradient-hero: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 50%, #60A5FA 100%);
+  --gradient-dark: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 100%);
+  --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #FAFBFC 100%);
+  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(29, 78, 216, 0.1) 0%, transparent 70%);
   
   /* Navbar specific */
   --navbar-height: 72px;
-  --navbar-bg: rgba(255, 255, 255, 0.95);
-  --navbar-bg-scrolled: rgba(255, 255, 255, 0.98);
+  --navbar-bg: rgba(255, 255, 255, 0.98);
+  --navbar-bg-scrolled: rgba(255, 255, 255, 1);
   
   /* Typography */
   --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -90,14 +91,14 @@
   --radius-2xl: 2rem;
   --radius-full: 9999px;
   
-  /* Shadows - Modern */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-  --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.15);
-  --shadow-glow-success: 0 0 40px rgba(16, 185, 129, 0.15);
+  /* Shadows - Soft & Clean */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.12);
+  --shadow-glow-success: 0 0 40px rgba(16, 185, 129, 0.12);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   
   /* Transitions */
@@ -115,71 +116,7 @@
   --z-tooltip: 1300;
 }
 
-/* Dark Mode Variables */
-[data-theme="dark"] {
-  /* Primary Colors - Adjusted for dark mode */
-  --color-primary: #3B82F6;
-  --color-primary-dark: #2563EB;
-  --color-primary-light: #60A5FA;
-  --color-primary-50: rgba(59, 130, 246, 0.15);
-  --color-primary-100: rgba(59, 130, 246, 0.25);
-  --color-primary-200: rgba(59, 130, 246, 0.35);
-  
-  /* Secondary Colors */
-  --color-secondary: #10B981;
-  --color-secondary-dark: #059669;
-  --color-secondary-light: #34D399;
-  --color-secondary-50: rgba(16, 185, 129, 0.15);
-  
-  /* Accent Colors */
-  --color-accent: #8B5CF6;
-  --color-accent-dark: #7C3AED;
-  --color-accent-light: #A78BFA;
-  --color-accent-50: rgba(139, 92, 246, 0.15);
-  
-  /* Alert/Warning Colors */
-  --color-alert: #F59E0B;
-  --color-alert-dark: #D97706;
-  --color-alert-light: #FBBF24;
-  
-  /* Status Colors */
-  --color-success: #34D399;
-  --color-warning: #FBBF24;
-  --color-warning-50: rgba(251, 191, 36, 0.15);
-  --color-danger: #F87171;
-  --color-info: #60A5FA;
-  
-  /* Neutral Colors - Dark Mode (Slate/Blue-ish Gray for better aesthetics) */
-  --color-background: #0F172A;
-  --color-surface: #1E293B;
-  --color-surface-elevated: #334155;
-  --color-border: #334155;
-  --color-border-light: #1E293B;
-  --color-text-primary: #F8FAFC;
-  --color-text-secondary: #CBD5E1;
-  --color-text-muted: #94A3B8;
-  
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
-  --gradient-secondary: linear-gradient(135deg, #059669 0%, #2563EB 100%);
-  --gradient-hero: linear-gradient(135deg, #020617 0%, #0F172A 100%);
-  --gradient-dark: linear-gradient(135deg, #020617 0%, #0F172A 100%);
-  --gradient-card: linear-gradient(145deg, #1E293B 0%, #0F172A 100%);
-  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-  
-  /* Navbar */
-  --navbar-bg: rgba(15, 23, 42, 0.85);
-  --navbar-bg-scrolled: rgba(15, 23, 42, 0.95);
-  
-  /* Shadows - softer for dark mode */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.1);
-  --shadow-glow-success: 0 0 40px rgba(16, 185, 129, 0.1);
-}
+/* Clean White Theme - Representing Transparency and Cleanliness */
 
 /* Reset & Base Styles */
 *,
@@ -200,10 +137,9 @@ body {
   font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--color-text-primary);
-  background-color: var(--color-background);
+  background-color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #app {

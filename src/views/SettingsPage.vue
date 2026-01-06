@@ -15,8 +15,7 @@ const tabs = [
   { id: 'notifikasi', label: 'Notifikasi', icon: '🔔' },
   { id: 'privasi', label: 'Privasi', icon: '🔒' },
   { id: 'favorit', label: 'Favorit', icon: '⭐' },
-  { id: 'data', label: 'Data Saya', icon: '📦' },
-  { id: 'tampilan', label: 'Tampilan', icon: '🎨' }
+  { id: 'data', label: 'Data Saya', icon: '📦' }
 ]
 
 // Profile form
@@ -32,9 +31,6 @@ const notifSettings = ref({ ...notificationsStore.settings })
 
 // Privacy settings
 const privacySettings = ref({ ...userStore.privacy })
-
-// Appearance settings
-const appearance = ref({ ...userStore.appearance })
 
 // Favorites (mock data)
 const favorites = ref([
@@ -59,12 +55,6 @@ const savePrivacy = () => {
   alert('Pengaturan privasi berhasil disimpan!')
 }
 
-const saveAppearance = () => {
-  userStore.updateAppearance(appearance.value)
-  userStore.applyAppearance()
-  alert('Pengaturan tampilan berhasil disimpan!')
-}
-
 const removeFavorite = (id) => {
   favorites.value = favorites.value.filter(f => f.id !== id)
 }
@@ -86,11 +76,6 @@ const deleteAccount = () => {
     alert('Akun berhasil dihapus!')
   }
 }
-
-// Watch appearance changes
-watch(() => appearance.value.tema, (newTheme) => {
-  document.documentElement.setAttribute('data-theme', newTheme)
-})
 </script>
 
 <template>
@@ -359,87 +344,6 @@ watch(() => appearance.value.tema, (newTheme) => {
             </div>
           </div>
 
-          <!-- Appearance Tab -->
-          <div v-if="activeTab === 'tampilan'" class="settings-panel">
-            <div class="panel-header">
-              <h2>Tampilan</h2>
-              <p>Sesuaikan tampilan aplikasi</p>
-            </div>
-            
-            <div class="panel-body">
-              <div class="form-group">
-                <label>Tema</label>
-                <div class="theme-options">
-                  <button 
-                    class="theme-option"
-                    :class="{ active: appearance.tema === 'light' }"
-                    @click="appearance.tema = 'light'"
-                  >
-                    <span class="theme-icon">☀️</span>
-                    <span>Terang</span>
-                  </button>
-                  <button 
-                    class="theme-option"
-                    :class="{ active: appearance.tema === 'dark' }"
-                    @click="appearance.tema = 'dark'"
-                  >
-                    <span class="theme-icon">🌙</span>
-                    <span>Gelap</span>
-                  </button>
-                  <button 
-                    class="theme-option"
-                    :class="{ active: appearance.tema === 'auto' }"
-                    @click="appearance.tema = 'auto'"
-                  >
-                    <span class="theme-icon">💻</span>
-                    <span>Sistem</span>
-                  </button>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label>Bahasa</label>
-                <select v-model="appearance.bahasa" class="form-select">
-                  <option value="id">Bahasa Indonesia</option>
-                  <option value="en">English</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label>Ukuran Font</label>
-                <div class="font-size-options">
-                  <button 
-                    class="font-option"
-                    :class="{ active: appearance.ukuranFont === 'small' }"
-                    @click="appearance.ukuranFont = 'small'"
-                  >
-                    <span style="font-size: 12px;">A</span>
-                    <span>Kecil</span>
-                  </button>
-                  <button 
-                    class="font-option"
-                    :class="{ active: appearance.ukuranFont === 'medium' }"
-                    @click="appearance.ukuranFont = 'medium'"
-                  >
-                    <span style="font-size: 16px;">A</span>
-                    <span>Sedang</span>
-                  </button>
-                  <button 
-                    class="font-option"
-                    :class="{ active: appearance.ukuranFont === 'large' }"
-                    @click="appearance.ukuranFont = 'large'"
-                  >
-                    <span style="font-size: 20px;">A</span>
-                    <span>Besar</span>
-                  </button>
-                </div>
-              </div>
-              
-              <div class="form-actions">
-                <button @click="saveAppearance" class="btn btn-primary">Simpan</button>
-              </div>
-            </div>
-          </div>
         </main>
       </div>
     </div>
