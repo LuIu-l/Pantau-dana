@@ -285,7 +285,10 @@
 
 <script setup>
 import { ref, computed, inject } from 'vue'
-import { kategoriLaporan, generateTicketCode } from '@/data/mockData.js'
+import { kategoriLaporan } from '@/data/mockData.js'
+import { useReportsStore } from '@/stores/reports'
+
+const reportsStore = useReportsStore()
 
 // Inject toast from parent
 const toast = inject('toast', {
@@ -367,24 +370,15 @@ const handleSubmit = async () => {
   await new Promise(resolve => setTimeout(resolve, 1000))
   
   try {
-    // Generate ticket code
-    ticketCode.value = generateTicketCode()
-    
-    // Simpan laporan ke localStorage (simulasi database)
-    const report = {
-      kode_tiket: ticketCode.value,
+    const reportData = {
       kategori: formData.value.kategori,
       lokasi: formData.value.lokasi,
       deskripsi: formData.value.deskripsi,
-      status: 'pending',
-      tanggal: new Date().toISOString(),
       foto: formData.value.files.length > 0 ? formData.value.files[0].name : null
     }
     
-    // Ambil laporan yang sudah ada
-    const existingReports = JSON.parse(localStorage.getItem('pantau_desa_reports') || '[]')
-    existingReports.push(report)
-    localStorage.setItem('pantau_desa_reports', JSON.stringify(existingReports))
+    const newReport = await reportsStore.addReport(reportData)
+    ticketCode.value = newReport.kode_tiket
     
     isSubmitted.value = true
     toast.success('Laporan berhasil dikirim! Simpan kode tiket Anda.', 'Berhasil')

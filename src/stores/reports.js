@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { storage } from '@/services/storage.js'
 import { generateTicketCode } from '@/data/mockData.js'
 
-export const useReportStore = defineStore('reports', () => {
+export const useReportsStore = defineStore('reports', () => {
   // State
   const reports = ref([])
   const isLoading = ref(false)
@@ -22,7 +22,7 @@ export const useReportStore = defineStore('reports', () => {
   })
 
   const getReportByTicket = computed(() => {
-    return (ticketCode) => reports.value.find(r => r.ticketCode === ticketCode)
+    return (ticketCode) => reports.value.find(r => r.kode_tiket === ticketCode)
   })
 
   // Actions
@@ -46,9 +46,9 @@ export const useReportStore = defineStore('reports', () => {
     try {
       const newReport = {
         ...reportData,
-        id: Date.now().toString(),
-        ticketCode: generateTicketCode(),
+        kode_tiket: generateTicketCode(),
         status: 'pending',
+        tanggal: new Date().toISOString(),
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         timeline: [
@@ -74,7 +74,7 @@ export const useReportStore = defineStore('reports', () => {
   }
 
   async function updateReportStatus(ticketCode, status, message) {
-    const report = reports.value.find(r => r.ticketCode === ticketCode)
+    const report = reports.value.find(r => r.kode_tiket === ticketCode)
     if (!report) {
       throw new Error('Laporan tidak ditemukan')
     }
@@ -92,18 +92,18 @@ export const useReportStore = defineStore('reports', () => {
   }
 
   async function deleteReport(ticketCode) {
-    const index = reports.value.findIndex(r => r.ticketCode === ticketCode)
+    const index = reports.value.findIndex(r => r.kode_tiket === ticketCode)
     if (index === -1) {
       throw new Error('Laporan tidak ditemukan')
     }
 
-    await storage.deleteReport(reports.value[index].id)
+    await storage.deleteReport(reports.value[index].kode_tiket)
     reports.value.splice(index, 1)
   }
 
   function findReportByTicket(ticketCode) {
     return reports.value.find(r => 
-      r.ticketCode.toLowerCase() === ticketCode.toLowerCase()
+      r.kode_tiket.toLowerCase() === ticketCode.toLowerCase()
     )
   }
 
@@ -124,6 +124,3 @@ export const useReportStore = defineStore('reports', () => {
     findReportByTicket
   }
 })
-
-// Alias untuk backward compatibility
-export const useReportsStore = useReportStore

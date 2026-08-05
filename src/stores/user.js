@@ -77,7 +77,6 @@ export const useUserStore = defineStore('user', () => {
     return JSON.stringify({
       profile: profile.value,
       privacy: privacy.value,
-      appearance: appearance.value,
       recentSearches: recentSearches.value,
     }, null, 2)
   }
@@ -86,11 +85,12 @@ export const useUserStore = defineStore('user', () => {
     // Clear all data
     profile.value = { nama: '', email: '', telepon: '', alamat: '', foto: null }
     privacy.value = { tampilkanNama: false, izinkanLihatReview: true, subscribeNewsletter: true }
-    appearance.value = { tema: 'auto', bahasa: 'id', ukuranFont: 'normal' }
     recentSearches.value = []
     onboardingCompleted.value = false
     localStorage.removeItem('user-store')
-    applyAppearance()
+    // Force light theme
+    document.documentElement.removeAttribute('data-theme')
+    localStorage.setItem('theme', 'light')
   }
 
   // Persistence

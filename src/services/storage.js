@@ -89,15 +89,28 @@ class StorageService {
    */
   async migrateFromLocalStorage() {
     try {
-      // Migrate reports
+      // Migrate from 'reports' key
       const reports = localStorage.getItem('reports')
       if (reports) {
         const parsedReports = JSON.parse(reports)
         for (const report of parsedReports) {
-          await this.addReport(report)
+          // Normalisasi key (pastikan ada kode_tiket)
+          const normalized = { ...report, kode_tiket: report.kode_tiket || report.ticketCode || `LPR-MIG-${Date.now()}` }
+          await this.addReport(normalized)
         }
         localStorage.removeItem('reports')
         console.log('Migrated reports from localStorage to IndexedDB')
+      }
+
+      // Migrate from 'pantau_desa_reports' key (Sistem A lama)
+      const pantauDesaReports = localStorage.getItem('pantau_desa_reports')
+      if (pantauDesaReports) {
+        const parsedPantauDesa = JSON.parse(pantauDesaReports)
+        for (const report of parsedPantauDesa) {
+          await this.addReport(report)
+        }
+        localStorage.removeItem('pantau_desa_reports')
+        console.log('Migrated pantau_desa_reports from localStorage to IndexedDB')
       }
     } catch (error) {
       console.error('Migration failed:', error)
@@ -138,6 +151,10 @@ class StorageService {
       request.onsuccess = () => resolve(request.result || null)
       request.onerror = () => reject(request.error)
     })
+  }
+
+  async getReports() {
+    return this.getAllReports()
   }
 
   async getAllReports() {

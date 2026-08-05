@@ -161,8 +161,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { laporanData, kategoriLaporan, formatTanggal, getStatusLabel } from '@/data/mockData.js'
+import { useReportsStore } from '@/stores/reports'
+
+const reportsStore = useReportsStore()
+
+onMounted(async () => {
+  // Pastikan data terbaru termuat dari IndexedDB
+  await reportsStore.loadReports()
+})
 
 const ticketCode = ref('')
 const isSearching = ref(false)
@@ -176,19 +184,18 @@ const searchReport = async () => {
   await new Promise(resolve => setTimeout(resolve, 800))
   
   try {
-    // Cari di localStorage terlebih dahulu
-    const savedReports = JSON.parse(localStorage.getItem('pantau_desa_reports') || '[]')
-    const foundInStorage = savedReports.find(r => r.kode_tiket === ticketCode.value.toUpperCase())
+    // Cari di store (berbasis IndexedDB)
+    const foundReport = reportsStore.findReportByTicket(ticketCode.value)
     
-    if (foundInStorage) {
-      report.value = foundInStorage
+    if (foundReport) {
+      report.value = foundReport
     } else {
-      // Fallback ke mock data
+      // Fallback ke mock data (khusus demo jika tidak ada data nyata)
       report.value = laporanData.find(r => r.kode_tiket === ticketCode.value.toUpperCase()) || null
     }
   } catch (error) {
     console.error('Error searching report:', error)
-    // Fallback ke mock data jika localStorage error
+    // Fallback ke mock data jika error
     report.value = laporanData.find(r => r.kode_tiket === ticketCode.value.toUpperCase()) || null
   }
   
